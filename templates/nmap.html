@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nmap Scan via SSH</title>
+    <style>
+        body {
+            background: #121212;
+            color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #1f1f1f;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 128, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #00ff99;
+        }
+
+        label, input, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            background: #2c2c2c;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        button {
+            background: #00ff99;
+            color: black;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+            color: #00ff99;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📡 Nmap Scan</h1>
+        <form method="POST" action="/scan-nmap">
+            <label for="target">Target IP/Domain</label>
+            <input type="text" id="target" name="target" placeholder="e.g., 192.168.1.10" required>
+            <button type="submit">Run Nmap Scan</button>
+        </form>
+        <a href="/home">← Back to Home</a>
+    </div>
+</body>
+</html>

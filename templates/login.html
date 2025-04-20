@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pento Login</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0d1117;
+      color: #f0f0f0;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-box {
+      background-color: #161b22;
+      padding: 40px 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 255, 153, 0.15);
+      text-align: center;
+      width: 340px;
+      border: 1px solid #00ff99;
+    }
+
+    .login-box h2 {
+      color: #00ff99;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      background-color: #0e1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      color: #f0f0f0;
+      font-size: 15px;
+      transition: 0.2s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #00ff99;
+      background-color: #0c0f14;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00ff99;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #00e68a;
+    }
+
+    .error {
+      color: #ff4f4f;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Pento Login</h2>
+    <p class="error"></p>
+    <form method="POST">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</body>
+</html>
