@@ -1,0 +1,32 @@
+<div class="chat-container summary-card">
+    <h2>🧠 Ask Pento-AI</h2>
+    <div id="chat-log" style="height: 300px; overflow-y: auto; background: #111; color: #0f0; padding: 1rem; font-family: monospace;"></div>
+    <form id="chat-form" style="display: flex; gap: 1rem;">
+        <input type="text" id="chat-input" placeholder="e.g., Scan 192.168.1.10 with nmap" style="flex: 1;">
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+<script>
+document.getElementById("chat-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const input = document.getElementById("chat-input");
+    const log = document.getElementById("chat-log");
+    const msg = input.value.trim();
+
+    if (!msg) return;
+
+    log.innerHTML += `<p><strong>👨 You:</strong> ${msg}</p>`;
+    input.value = "";
+
+    const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: msg }),
+    });
+
+    const data = await response.json();
+    log.innerHTML += `<p><strong>🤖 Pento-AI:</strong> ${data.reply}</p>`;
+    log.scrollTop = log.scrollHeight;
+});
+</script>
