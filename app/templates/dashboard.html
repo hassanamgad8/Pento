@@ -75,6 +75,18 @@
             </div>
         </div>
 
+        <div class="ai-form-scanner summary-card">
+            <h2>🔍 AI Website Scanner</h2>
+            <form id="ai-form-scanner-form">
+                <input type="text" id="ai-url-input" placeholder="http://example.com/" style="width: 60%;">
+                <button type="submit">Scan with AI</button>
+            </form>
+            <pre id="ai-scan-output" style="background:#000; color:#0f0; padding:1rem; margin-top:1rem;"></pre>
+        </div>
+        
+        <script src="{{ url_for('static', filename='js/ai_scanner.js') }}"></script>
+       
+
         
     </main>
 </div>

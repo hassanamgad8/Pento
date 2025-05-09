@@ -1,0 +1,18 @@
+<h1>AI Vulnerability Scan Report</h1><p><strong>Target:</strong> http://testphp.vulnweb.com/</p><p><strong>Generated:</strong> 2025-04-23_00-09-54</p><hr><h2>Form: http://testphp.vulnweb.com/search.php?test=query</h2><p>Method: post</p><p>Inputs: searchFor, goButton</p><details><summary><strong>AI Output</strong></summary><pre>SQLi: `OR '1'='1`
+Reason: SQL injection attacks often use common tautologies like OR '1'='1' to bypass input validations and directly manipulate the query logic, potentially allowing for unauttermediate access or retrieval of information from the database. This specific payload exploits a logical error in conditional statements within a vulnerable application that doesn't properly sanitize user inputs before incorporating them into SQL queries.
+
+XSS: `<script>alert(document.URL)</script>`
+Reason: Cross-Site Scripting (XSS) attacks inject client-side scripts, like JavaScript alerts or redirects to steal data from other users' sessions by executing these malicious scripts within the trusted context of a web application where they are displayed. The above payload when input into search fields could be rendered in browser and executed if proper output encoding is not applied on inputs before rendering them as HTML, leading potentially to information leakage or session hijacking (Cross-Site Scripting).
+</pre></details><hr><h3>XSS Test</h3><pre>Input Tested: searchFor
+Payload: `<script>alert(document.URL)</script>`
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: goButton
+Payload: `<script>alert(document.URL)</script>`
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: searchFor
+Payload: `OR '1'='1`
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: goButton
+Payload: `OR '1'='1`
+Result: ✅ No issue detected
+Status Code: 200</pre>

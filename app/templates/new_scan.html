@@ -1,0 +1,33 @@
+<h2>🚀 Start New Scan</h2>
+<p>Choose scan type and target. Click Run to begin.</p>
+
+<form id="start-zap-scan-form">
+  <input type="text" id="target-url" placeholder="http://example.com" required style="width: 60%;">
+  <select id="scan-tool">
+    <option value="zap">OWASP ZAP</option>
+    <option value="ai">AI Agent (XSS/SQLi)</option>
+  </select>
+  <button type="submit">Run Scan</button>
+</form>
+
+<div id="scan-status" style="margin-top: 1rem; color: #0f0;"></div>
+
+<script>
+document.getElementById("start-zap-scan-form").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const url = document.getElementById("target-url").value;
+  const tool = document.getElementById("scan-tool").value;
+  const status = document.getElementById("scan-status");
+
+  status.innerText = "⏳ Starting scan...";
+  
+  const res = await fetch("/start_scan", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ url, tool })
+  });
+
+  const data = await res.json();
+  status.innerText = data.message || "✅ Scan started";
+});
+</script>

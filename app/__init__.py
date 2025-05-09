@@ -1,10 +1,13 @@
-from flask import Flask
+from flask import Flask, app
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from dotenv import load_dotenv
 import os
 from app.routes.chatbot import chatbot_bp
+from app.routes.ai_scan import ai_scan_bp
+from app.routes.pages import pages_bp
+
 
 
 
@@ -37,6 +40,15 @@ def create_app():
     app.register_blueprint(dashboard_bp)
     app.register_blueprint(scans_bp)
     app.register_blueprint(chatbot_bp)
+    app.register_blueprint(ai_scan_bp)
+    app.register_blueprint(pages_bp)
+
+
+
+
+    from app.cli import create_user
+    app.cli.add_command(create_user)
+
 
 
     # User loader function definition here:
@@ -47,3 +59,5 @@ def create_app():
         return User.query.get(int(user_id))
 
     return app
+
+

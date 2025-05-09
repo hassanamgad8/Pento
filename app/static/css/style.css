@@ -496,3 +496,34 @@ pre.bot-reply {
     white-space: pre-wrap;
     line-height: 1.4;
 }
+
+
+.ai-form-scanner {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #161b22;
+    border: 1px solid #0f0;
+    border-radius: 8px;
+}
+
+.ai-form-scanner input {
+    background-color: #111;
+    color: #0f0;
+    padding: 0.5rem;
+    border: 1px solid #0f0;
+    font-family: monospace;
+}
+
+.ai-form-scanner button {
+    padding: 0.5rem 1rem;
+    background-color: #0f0;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+.ai-form-scanner pre {
+    font-size: 0.9rem;
+    font-family: monospace;
+    white-space: pre-wrap;
+}

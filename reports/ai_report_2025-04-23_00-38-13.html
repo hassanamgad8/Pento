@@ -1,0 +1,31 @@
+<h1>AI Vulnerability Scan Report</h1><p><strong>Target:</strong> http://testphp.vulnweb.com/</p><p><strong>Generated:</strong> 2025-04-23_00-38-13</p><hr><h2>Form: http://testphp.vulnweb.com/search.php?test=query</h2><p>Method: post</p><p>Inputs: searchFor, goButton</p><details><summary><strong>AI Output</strong></summary><pre>```html
+<form action="search.php?test=query" method="post">
+<label>search art</label>
+<input name="searchFor" size="1 end;" type="text"/>
+<input name="goButton" type="submit" value="go"/>
+</form>
+```
+SQLi: <payload>`' OR '1'='1`</payload>
+Reason: This payload will always evaluate to true, potentially bypassing input checks and allowing the attacker to see all entries in the database.
+
+```html
+<form action="search.php?test=query" method="post">
+<label>search art</label>
+<input name="searchFor" size="10" type="text"/>
+<input name="goButton" type="submit" value="go"/>
+</form>
+```
+XSS: <payload>`<img src="x.on(click=alert('test'))>"`</payload>
+Reason: This payload will execute JavaScript when the image is clicked, potentially displaying a harmful alert to the user or performing other client-side script executions if they manage to bypass output encoding mechanisms on the server side.</pre></details><hr><h3>XSS Test</h3><pre>Input Tested: searchFor
+Payload: <payload>`<img src="x.on(click=alert('test'))>"`</payload>
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>XSS Test</h3><pre>Input Tested: goButton
+Payload: <payload>`<img src="x.on(click=alert('test'))>"`</payload>
+Result: ✅ No issue detected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: searchFor
+Payload: <payload>`' OR '1'='1`</payload>
+Result: 🛑 Payload reflected
+Status Code: 200</pre><hr><h3>SQLi Test</h3><pre>Input Tested: goButton
+Payload: <payload>`' OR '1'='1`</payload>
+Result: ✅ No issue detected
+Status Code: 200</pre>
