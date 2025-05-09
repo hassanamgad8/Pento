@@ -40,7 +40,7 @@
     }
 
     function setupResultsListeners() {
-        // Add any additional logic for the results view
+        // Placeholder for future logic
     }
 
     const zapForm = document.getElementById("zap-scan-form");
@@ -179,20 +179,22 @@
 
     async function showResults(scanInfo) {
         await loadResultsTemplate();
-        progressContainer.classList.add("hidden");
+        progressContainer.innerHTML = ""; // ✅ Clear previous progress block to prevent duplication
 
-        document.getElementById("result-target-url").textContent = scanInfo.url;
+        const targetEl = document.getElementById("scan-target-url");
+        if (targetEl) targetEl.textContent = scanInfo.url;
 
         if (scanInfo.reports) {
-            document.getElementById("html-report-link").href = scanInfo.reports.html;
-            document.getElementById("pdf-report-link").href = scanInfo.reports.pdf;
-            document.getElementById("json-report-link").href = scanInfo.reports.json;
+            const htmlBtn = document.getElementById("html-report-link");
+            const pdfBtn = document.getElementById("pdf-report-link");
+            const jsonBtn = document.getElementById("json-report-link");
+
+            if (htmlBtn) htmlBtn.href = scanInfo.reports.html;
+            if (pdfBtn) pdfBtn.href = scanInfo.reports.pdf;
+            if (jsonBtn) jsonBtn.href = scanInfo.reports.json;
         }
 
         const counts = { high: 0, medium: 0, low: 0, info: 0 };
-        const alertsContainer = document.getElementById("alerts-container");
-        alertsContainer.innerHTML = "";
-
         if (scanInfo.alerts && scanInfo.alerts.length) {
             scanInfo.alerts.forEach(alert => {
                 const risk = alert.risk.toLowerCase();
@@ -200,17 +202,21 @@
                 else if (risk.includes("medium")) counts.medium++;
                 else if (risk.includes("low")) counts.low++;
                 else counts.info++;
-
-                alertsContainer.appendChild(createAlertElement(alert));
             });
-        } else {
-            alertsContainer.innerHTML = "<div class='text-center py-6 text-gray-500'>No security issues found</div>";
         }
 
-        document.getElementById("high-count").textContent = counts.high;
-        document.getElementById("medium-count").textContent = counts.medium;
-        document.getElementById("low-count").textContent = counts.low;
-        document.getElementById("info-count").textContent = counts.info;
+        const total = counts.high + counts.medium + counts.low + counts.info;
+
+        const assign = (id, val) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = val;
+        };
+
+        assign("high-count", counts.high);
+        assign("medium-count", counts.medium);
+        assign("low-count", counts.low);
+        assign("info-count", counts.info);
+        assign("total-count", total);
     }
 
     function createAlertElement(alert) {
