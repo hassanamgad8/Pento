@@ -1,0 +1,29 @@
+<div id="scan-progress-content">
+    <div class="mb-6">
+        <h2 class="text-lg font-medium mb-2">Target: <span id="scan-target-url" class="font-normal"></span></h2>
+        <div id="scan-status-message" class="text-indigo-600 font-medium">Initializing scan...</div>
+    </div>
+    
+    <div class="mb-6">
+        <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+            <div id="scan-progress-bar" class="bg-indigo-600 h-2.5 rounded-full" style="width: 0%"></div>
+        </div>
+        <div class="flex justify-between mt-2">
+            <span id="scan-progress-label" class="text-sm text-gray-500">0%</span>
+            <span id="scan-current-stage" class="text-sm text-gray-500">Preparing...</span>
+        </div>
+    </div>
+    
+    <div id="scan-log" class="bg-gray-100 dark:bg-gray-900 p-4 rounded-md h-64 overflow-y-auto mb-6 font-mono text-sm">
+        <div class="log-entry">🚀 Initializing scan...</div>
+    </div>
+    
+    <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+        <button id="cancel-scan-btn" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+            Cancel Scan
+        </button>
+        <div class="text-sm text-gray-500">
+            This process may take several minutes depending on the target size
+        </div>
+    </div>
+</div>

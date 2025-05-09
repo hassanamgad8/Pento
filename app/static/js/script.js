@@ -26,7 +26,19 @@ document.addEventListener("DOMContentLoaded", function () {
                     .then((html) => {
                         mainContent.innerHTML = html;
 
-                        // Handle chatbot form logic
+                        // 🧠 Dynamically load scanner logic if new_scan
+                        if (route === "/new_scan") {
+                            const existingScript = document.querySelector("script[src='/static/js/zap_scanner.js']");
+                            if (existingScript) {
+                                existingScript.remove();
+                            }
+                            const script = document.createElement("script");
+                            script.src = "/static/js/zap_scanner.js";
+                            script.type = "module"; // better support for modern environments
+                            document.body.appendChild(script);
+                        }
+
+                        // 🤖 Handle chatbot logic
                         if (route === "/chatbot_component") {
                             const form = document.getElementById("chat-form");
                             const input = document.getElementById("chat-input");

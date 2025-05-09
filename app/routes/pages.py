@@ -30,3 +30,16 @@ def reports():
 @login_required
 def new_scan():
     return render_template("new_scan.html")
+
+
+
+
+@pages_bp.route("/scan_progress")
+@login_required
+def scan_progress():
+    return render_template("scan_progress.html")
+
+@pages_bp.route("/scan_results")
+@login_required
+def scan_results():
+    return render_template("scan_results.html")

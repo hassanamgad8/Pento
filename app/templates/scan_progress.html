@@ -1,0 +1,154 @@
+{% extends "layout.html" %}
+
+{% block title %}Scan in Progress{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-6">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <h1 class="text-2xl font-bold mb-6">Scan in Progress</h1>
+        
+        <div id="scan-progress-container">
+            <div id="scan-progress-content">
+                <div class="mb-6">
+                    <h2 class="text-lg font-medium mb-2">Target: <span id="scan-target-url" class="font-normal"></span></h2>
+                    <div id="scan-status-message" class="text-indigo-600 font-medium">Initializing scan...</div>
+                    
+                    <div class="mt-4">
+                        <div class="w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700">
+                            <div id="scan-progress-bar" class="bg-indigo-600 h-4 rounded-full" style="width: 0%"></div>
+                        </div>
+                        <div class="flex justify-between mt-1 text-sm text-gray-600 dark:text-gray-400">
+                            <span id="scan-progress-percentage">0%</span>
+                            <span id="scan-current-stage">Preparing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col space-y-4">
+                    <div id="scan-log" class="bg-gray-100 dark:bg-gray-900 p-4 rounded-md h-48 overflow-y-auto text-sm font-mono">
+                        <div class="text-gray-600 dark:text-gray-400">Scan logs will appear here...</div>
+                    </div>
+                    
+                    <div class="flex justify-between">
+                        <button id="cancel-scan-btn" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+                            Cancel Scan
+                        </button>
+                        <button id="view-results-btn" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 hidden">
+                            View Results
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- This div will be populated with results when scan completes -->
+        <div id="scan-results-container" class="hidden"></div>
+    </div>
+</div>
+
+<!-- JavaScript for handling scan progress -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get scan ID from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const scanId = urlParams.get('scan_id');
+        
+        if (!scanId) {
+            document.getElementById('scan-status-message').textContent = 'Error: No scan ID provided';
+            document.getElementById('scan-status-message').classList.add('text-red-600');
+            return;
+        }
+        
+        const progressBar = document.getElementById('scan-progress-bar');
+        const progressPercentage = document.getElementById('scan-progress-percentage');
+        const currentStage = document.getElementById('scan-current-stage');
+        const scanLog = document.getElementById('scan-log');
+        const cancelButton = document.getElementById('cancel-scan-btn');
+        const resultsButton = document.getElementById('view-results-btn');
+        const scanTargetUrl = document.getElementById('scan-target-url');
+        
+        // Function to add log entry
+        function addLogEntry(message) {
+            const entry = document.createElement('div');
+            entry.className = 'py-1';
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            scanLog.appendChild(entry);
+            scanLog.scrollTop = scanLog.scrollHeight;
+        }
+        
+        // Poll for scan status
+        let statusPoller;
+        function pollStatus() {
+            fetch(`/zap_scan_status?scan_id=${scanId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        addLogEntry(`Error: ${data.error}`);
+                        clearInterval(statusPoller);
+                        return;
+                    }
+                    
+                    // Update UI with scan status
+                    scanTargetUrl.textContent = data.url;
+                    progressBar.style.width = `${data.progress}%`;
+                    progressPercentage.textContent = `${Math.round(data.progress)}%`;
+                    currentStage.textContent = data.current_stage;
+                    
+                    // Add log entry for stage changes
+                    if (data.current_stage !== currentStage.textContent) {
+                        addLogEntry(`Stage changed to: ${data.current_stage}`);
+                    }
+                    
+                    // Check if scan is complete
+                    if (data.status === 'completed') {
+                        addLogEntry('Scan completed successfully!');
+                        document.getElementById('scan-status-message').textContent = 'Scan completed successfully';
+                        document.getElementById('scan-status-message').classList.add('text-green-600');
+                        cancelButton.classList.add('hidden');
+                        resultsButton.classList.remove('hidden');
+                        clearInterval(statusPoller);
+                        
+                        // Load results view
+                        resultsButton.addEventListener('click', function() {
+                            window.location.href = `/scan_results?scan_id=${scanId}`;
+                        });
+                    } else if (data.status === 'cancelled') {
+                        addLogEntry('Scan was cancelled');
+                        document.getElementById('scan-status-message').textContent = 'Scan cancelled';
+                        document.getElementById('scan-status-message').classList.add('text-red-600');
+                        cancelButton.classList.add('hidden');
+                        clearInterval(statusPoller);
+                    }
+                })
+                .catch(error => {
+                    addLogEntry(`Error polling status: ${error}`);
+                });
+        }
+        
+        // Start polling
+        addLogEntry('Starting scan status polling...');
+        pollStatus(); // Initial poll
+        statusPoller = setInterval(pollStatus, 3000); // Poll every 3 seconds
+        
+        // Cancel scan handler
+        cancelButton.addEventListener('click', function() {
+            if (confirm('Are you sure you want to cancel this scan?')) {
+                fetch('/zap_scan_cancel', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ scan_id: scanId }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    addLogEntry(data.message || 'Scan cancellation requested');
+                })
+                .catch(error => {
+                    addLogEntry(`Error cancelling scan: ${error}`);
+                });
+            }
+        });
+    });
+</script>
+{% endblock %}
