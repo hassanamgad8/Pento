@@ -12,6 +12,7 @@ from app.routes.zap_scan import zap_bp
 
 
 
+
 db = SQLAlchemy()
 migrate = Migrate()
 login_manager = LoginManager()
@@ -43,6 +44,7 @@ def create_app():
     app.register_blueprint(ai_scan_bp)
     app.register_blueprint(pages_bp)
     app.register_blueprint(zap_bp)
+    
 
 
 

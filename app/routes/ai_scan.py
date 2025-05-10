@@ -26,3 +26,8 @@ def site_scan():
         return jsonify({"message": "✅ Scan complete", "total_forms": len(results)})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+
+
+

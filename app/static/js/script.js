@@ -28,14 +28,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         // 🧠 Dynamically load scanner logic if new_scan
                         if (route === "/new_scan") {
-                            const existingScript = document.querySelector("script[src='/static/js/zap_scanner.js']");
-                            if (existingScript) {
-                                existingScript.remove();
-                            }
+                            // Load new_scan.js for tab logic
+                            const scanScriptId = "new-scan-script";
+                            const oldScript = document.getElementById(scanScriptId);
+                            if (oldScript) oldScript.remove();
+
                             const script = document.createElement("script");
-                            script.src = "/static/js/zap_scanner.js";
-                            script.type = "module"; // better support for modern environments
+                            script.id = scanScriptId;
+                            script.src = "/static/js/new_scan.js";
+                            script.defer = true;
                             document.body.appendChild(script);
+
+                            // Optional: also load zap_scanner.js if needed
+                            const existingZAP = document.querySelector("script[src='/static/js/zap_scanner.js']");
+                            if (existingZAP) existingZAP.remove();
+
+                            const zapScript = document.createElement("script");
+                            zapScript.src = "/static/js/zap_scanner.js";
+                            zapScript.type = "module";
+                            document.body.appendChild(zapScript);
                         }
 
                         // 🤖 Handle chatbot logic

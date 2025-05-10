@@ -29,9 +29,13 @@ def reports():
 @pages_bp.route("/new_scan")
 @login_required
 def new_scan():
-    return render_template("new_scan.html")
-
-
+    recent_tools = [
+        {"title": "Port Scanner", "desc": "Scan open ports", "url": "/port-scanner", "icon": "port.png"},
+        {"title": "Website Scanner", "desc": "Run ZAP scan", "url": "/zap_scan", "icon": "zap.png"},
+        {"title": "Whois Lookup", "desc": "Domain ownership info", "url": "/whois-lookup", "icon": "whois.png"},
+        {"title": "DNS Lookup", "desc": "Check DNS records", "url": "/dns-lookup", "icon": "dns.png"},
+    ]
+    return render_template("new_scan.html", recent_tools=recent_tools)
 
 
 @pages_bp.route("/scan_progress")

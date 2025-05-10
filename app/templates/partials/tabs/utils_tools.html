@@ -1,0 +1,14 @@
+<!-- partials/tabs/utils_tools.html -->
+<div class="tool-grid">
+    {% set tools = [
+        {"title": "Whois Lookup", "desc": "Get ownership & registration info", "url": "/whois-lookup", "icon": "whois.png"},
+        {"title": "DNS Lookup", "desc": "DNS records and server info", "url": "/dns-lookup", "icon": "dns.png"}
+    ] %}
+    {% for tool in tools %}
+        {% set title = tool.title %}
+        {% set desc = tool.desc %}
+        {% set url = tool.url %}
+        {% set icon = tool.icon %}
+        {% include 'partials/tool_card.html' %}
+    {% endfor %}
+</div>

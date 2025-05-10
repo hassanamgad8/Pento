@@ -1,0 +1,14 @@
+<!-- partials/tabs/vuln_tools.html -->
+<div class="tool-grid">
+    {% set tools = [
+        {"title": "Website Scanner", "desc": "Scan a website for vulnerabilities using OWASP ZAP", "url": "/zap_scan", "icon": "zap.png"},
+        {"title": "WordPress Scanner", "desc": "Scan WordPress sites for known issues", "url": "/wp_scan", "icon": "wordpress.png"}
+    ] %}
+    {% for tool in tools %}
+        {% set title = tool.title %}
+        {% set desc = tool.desc %}
+        {% set url = tool.url %}
+        {% set icon = tool.icon %}
+        {% include 'partials/tool_card.html' %}
+    {% endfor %}
+</div>

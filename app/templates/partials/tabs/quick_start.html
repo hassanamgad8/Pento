@@ -1,0 +1,12 @@
+<!-- partials/tabs/quick_start.html -->
+<div class="tool-grid">
+    {% for tool in recent_tools %}
+        {% set title = tool.title %}
+        {% set desc = tool.desc %}
+        {% set url = tool.url %}
+        {% set icon = tool.icon %}
+        {% include 'partials/tool_card.html' %}
+    {% else %}
+        <div class="text-gray-500 text-sm mt-4 text-center">No recent tools yet.</div>
+    {% endfor %}
+</div>

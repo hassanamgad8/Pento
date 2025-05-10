@@ -1,0 +1,16 @@
+<!-- partials/tabs/recon_tools.html -->
+<div class="tool-grid">
+    {% set tools = [
+        {"title": "Port Scanner", "desc": "Scan open ports and services", "url": "/port-scanner", "icon": "port.png"},
+        {"title": "Domain Finder", "desc": "Find domains based on your target", "url": "/domain-finder", "icon": "domain.png"},
+        {"title": "Subdomain Finder", "desc": "Enumerate target's subdomains", "url": "/subdomain-finder", "icon": "subdomain.png"},
+        {"title": "WAF Detector", "desc": "Detect if a firewall is active", "url": "/waf-detector", "icon": "waf.png"}
+    ] %}
+    {% for tool in tools %}
+        {% set title = tool.title %}
+        {% set desc = tool.desc %}
+        {% set url = tool.url %}
+        {% set icon = tool.icon %}
+        {% include 'partials/tool_card.html' %}
+    {% endfor %}
+</div>

@@ -527,3 +527,18 @@ pre.bot-reply {
     font-family: monospace;
     white-space: pre-wrap;
 }
+
+
+.hidden {
+    display: none;
+}
+
+.tab-active {
+    border: 2px solid lime;
+    background-color: black;
+}
+
+.active-tab {
+    background-color: #0f0 !important;
+    color: #000 !important;
+}
