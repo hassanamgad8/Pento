@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+
+{% block title %}WAF Detector{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="tool-card">
+        <h1 class="text-3xl">WAF Detector</h1>
+        
+        <div class="mb-6">
+            <form id="waf-scan-form" class="space-y-6">
+                <div>
+                    <label for="target-url" class="block">Target URL</label>
+                    <input type="url" id="target-url" name="target-url" required
+                        class="w-full px-3 py-2 bg-black border border-green-500 text-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                        placeholder="https://example.com">
+                    <p class="text-xs text-gray-400 mt-1">Enter the full URL including http:// or https://</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Scan Options</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" id="aggressive" name="aggressive"
+                                class="h-4 w-4 text-green-500 focus:ring-green-500 border-green-300 bg-black rounded">
+                            <span class="ml-2">Use aggressive checks (-a)</span>
+                        </label>
+
+                        <label class="flex items-center">
+                            <input type="checkbox" id="findall" name="findall"
+                                class="h-4 w-4 text-green-500 focus:ring-green-500 border-green-300 bg-black rounded">
+                            <span class="ml-2">Find all possible WAFs (--findall)</span>
+                        </label>
+
+                        <label class="flex items-center">
+                            <input type="checkbox" id="verbose" name="verbose"
+                                class="h-4 w-4 text-green-500 focus:ring-green-500 border-green-300 bg-black rounded">
+                            <span class="ml-2">Enable verbose output (-v)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex justify-end pt-4 border-t border-green-800">
+                    <button type="submit" class="green-button">
+                        ▶ Start Scan
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div id="scan-results" class="hidden">
+            <div class="border-t border-green-800 pt-6">
+                <h2 class="text-xl font-bold mb-4">Scan Results</h2>
+                <div id="results-content" class="space-y-4">
+                    <pre id="scan-output" class="bg-black border border-green-500 p-4 rounded-md text-green-400 overflow-x-auto"></pre>
+                </div>
+                
+                <div class="mt-6 flex justify-between">
+                    <a href="/new_scan" class="green-button">
+                        Back to Tools
+                    </a>
+                    <button id="download-report" class="green-button">
+                        Download Report
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('waf-scan-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = {
+        target: document.getElementById('target-url').value,
+        aggressive: document.getElementById('aggressive').checked,
+        findall: document.getElementById('findall').checked,
+        verbose: document.getElementById('verbose').checked
+    };
+    
+    try {
+        const response = await fetch('/api/waf-scan', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        const data = await response.json();
+        
+        if (data.error) {
+            alert(data.error);
+            return;
+        }
+        
+        document.getElementById('scan-output').textContent = data.output;
+        document.getElementById('scan-results').classList.remove('hidden');
+        
+        // Enable download button if report is available
+        if (data.report_path) {
+            document.getElementById('download-report').onclick = () => {
+                window.location.href = data.report_path;
+            };
+        }
+    } catch (error) {
+        alert('An error occurred during the scan. Please try again.');
+        console.error('Scan error:', error);
+    }
+});
+</script>
+{% endblock %} 

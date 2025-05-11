@@ -1,0 +1,23 @@
+
+                   ______
+                  /      \
+                 (  Woof! )
+                  \  ____/                      )
+                  ,,                           ) (_
+             .-. -    _______                 ( |__|
+            ()``; |==|_______)                .)|__|
+            / ('        /|\                  (  |__|
+        (  /  )        / | \                  . |__|
+         \(_)_))      /  |  \                   |__|
+
+                    ~ WAFW00F : v2.3.1 ~
+    The Web Application Firewall Fingerprinting Toolkit
+    
+[*] Checking https://www.cloudflare.com/
+[+] The site https://www.cloudflare.com/ is behind Cloudflare (Cloudflare Inc.) WAF.
+[+] Generic Detection results:
+[*] The site https://www.cloudflare.com/ seems to be behind a WAF or some sort of security solution
+[~] Reason: The server returns a different response code when an attack string is used.
+
+Normal response code is "200", while the response code to cross-site scripting attack is "403"
+[~] Number of requests: 5

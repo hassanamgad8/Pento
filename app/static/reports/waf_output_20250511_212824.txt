@@ -1,0 +1,19 @@
+
+                   ______
+                  /      \
+                 (  Woof! )
+                  \  ____/                      )
+                  ,,                           ) (_
+             .-. -    _______                 ( |__|
+            ()``; |==|_______)                .)|__|
+            / ('        /|\                  (  |__|
+        (  /  )        / | \                  . |__|
+         \(_)_))      /  |  \                   |__|
+
+                    ~ WAFW00F : v2.3.1 ~
+    The Web Application Firewall Fingerprinting Toolkit
+    
+[*] Checking http://testphp.vulnweb.com/
+[+] Generic Detection results:
+[-] No WAF detected by the generic detection
+[~] Number of requests: 7

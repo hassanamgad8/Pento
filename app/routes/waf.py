@@ -1,27 +1,28 @@
+from flask import Blueprint, render_template, jsonify, request
+from flask_login import login_required
 import subprocess
 import datetime
 import shutil
 import sys
-from flask import Blueprint, render_template, request, jsonify
+import os
 
-waf_bp = Blueprint('waf', __name__)
+waf_bp = Blueprint("waf", __name__)
+
+@waf_bp.route("/waf-detector")
+@login_required
+def waf_detector():
+    return render_template("tools/waf_detector.html")
 
 def check_wafw00f_installed():
     if not shutil.which("wafw00f"):
         return False
     return True
 
-@waf_bp.route('/waf-detector')
-def waf_detector_page():
+@waf_bp.route("/api/waf-scan", methods=['POST'])
+@login_required
+def waf_scan():
     if not check_wafw00f_installed():
-        return render_template('error.html', 
-                             message="wafw00f is not installed. Please install it using: pip install wafw00f")
-    return render_template('waf_detector.html')
-
-@waf_bp.route('/api/waf-scan', methods=['POST'])
-def scan_waf():
-    if not check_wafw00f_installed():
-        return jsonify({"error": "wafw00f is not installed"}), 500
+        return jsonify({"error": "wafw00f not found. Install it using: pip install wafw00f"}), 400
 
     data = request.get_json()
     target = data.get('target')
@@ -43,15 +44,23 @@ def scan_waf():
 
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        return jsonify({"output": result.stdout})
+        
+        # Save the output to a file
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"waf_output_{timestamp}.txt"
+        output_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'reports')
+        os.makedirs(output_dir, exist_ok=True)
+        output_path = os.path.join(output_dir, filename)
+        
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(result.stdout)
+
+        return jsonify({
+            "output": result.stdout,
+            "report_path": f"/static/reports/{filename}"
+        })
+
     except subprocess.CalledProcessError as e:
-        return jsonify({"error": e.stderr}), 500
+        return jsonify({"error": f"wafw00f error: {e.stderr}"}), 500
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-@waf_bp.route('/partials/tools/waf_detector')
-def waf_detector_partial():
-    return render_template('partials/tools/waf_detector.html')
-
-if __name__ == "__main__":
-    scan_waf_interactive()
+        return jsonify({"error": str(e)}), 500 
