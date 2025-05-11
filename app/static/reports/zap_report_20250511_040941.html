@@ -1,0 +1,3053 @@
+
+    <html>
+    <head><style>
+    body { background: #111; color: #eee; font-family: monospace; padding: 2rem; }
+    h1 { color: #0f0; }
+    .alert { border-bottom: 1px solid #444; margin-bottom: 1rem; padding-bottom: 1rem; }
+    </style></head>
+    <body>
+    <h1>OWASP ZAP Scan Report</h1>
+    <p><strong>Target:</strong> http://testphp.vulnweb.com/</p>
+    <p><strong>Total Alerts:</strong> 380</p>
+    <hr>
+    
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/sitemap.xml</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/robots.txt</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/hpp/</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/privacy.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/index.php</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/AJAX/index.php</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/categories.php</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/cart.php</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/disclaimer.php</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/sitemap.xml</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/robots.txt</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/privacy.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/hpp/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/AJAX/index.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/index.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/cart.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/login.php</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/privacy.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/hpp/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/disclaimer.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/AJAX/index.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/categories.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/index.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/cart.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/login.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/hpp/</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/disclaimer.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/userinfo.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/categories.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Modern Web Application</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/AJAX/index.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <a href="#" onclick="loadSomething('titles.php')">titles</a></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/index.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/login.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/cart.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/hpp/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/disclaimer.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/userinfo.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/categories.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="" method="post" name="faddentry"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/AJAX/index.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Modern Web Application</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <a href='#' onClick="window.open('./comment.php?aid=1','comment','width=500,height=400')">comment on this artist</a></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/login.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form name="loginform" method="post" action="userinfo.php"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/index.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/cart.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/style.css</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/high</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/disclaimer.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/AJAX/index.php</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/categories.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/login.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/index.php</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/cart.php</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/style.css</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/disclaimer.php</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/high</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/AJAX/index.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/categories.php</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/index.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/login.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/cart.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/images/logo.gif</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/disclaimer.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/search.php?test=query</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=1</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/categories.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=4</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/login.php</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=3</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=2</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/images/logo.gif</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Flash/add.swf</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/network-attached-storage-dlink/1/</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/web-camera-a4tech/2/</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/AJAX/styles.css</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/login.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/search.php?test=query</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=4</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Flash/add.swf</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=1</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/network-attached-storage-dlink/1/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=3</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/AJAX/styles.css</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/web-camera-a4tech/2/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/search.php?test=query</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=2</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=4</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/signup.php</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/network-attached-storage-dlink/1/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/web-camera-a4tech/2/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/1.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/search.php?test=query</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=4</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/signup.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/network-attached-storage-dlink/1/</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/web-camera-a4tech/2/</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/1.jpg</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/search.php?test=query</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/signup.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Modern Web Application</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <a href='#' onClick="window.open('./comment.php?pid=1','comment','width=500,height=400')">comment on this picture</a></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=4</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/network-attached-storage-dlink/1/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Modern Web Application</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <a href='#' onClick="window.open('./comment.php?pid=6','comment','width=500,height=400')">comment on this picture</a></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/1.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/web-camera-a4tech/2/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] User Controllable HTML Element Attribute (Potential XSS)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/search.php?test=query</p>
+            <p><strong>Parameter:</strong> goButton</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/signup.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form name="form1" method="post" action="/secured/newuser.php"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=4</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/images/remark.gif</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Modern Web Application</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <a href='#' onClick="window.open('./comment.php?aid=1','comment','width=500,height=400')">comment on this artist</a></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=3</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Modern Web Application</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <a href='#' onClick="window.open('./comment.php?aid=3','comment','width=500,height=400')">comment on this artist</a></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/color-printer/3/</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file='%20+%20pict.item(0).firstChild.nodeValue%20+%20'</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] User Controllable HTML Element Attribute (Potential XSS)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/search.php?test=query</p>
+            <p><strong>Parameter:</strong> goButton</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Modern Web Application</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <a href='#' onClick="window.open('./comment.php?aid=2','comment','width=500,height=400')">comment on this artist</a></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/signup.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=4</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=1</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/images/remark.gif</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=2</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file='%20+%20pict.item(0).firstChild.nodeValue%20+%20'</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/color-printer/3/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/search.php?test=query</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/hpp/?pp=12</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/signup.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?cat=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=1</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/userinfo.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=3</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file='%20+%20pict.item(0).firstChild.nodeValue%20+%20'</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/color-printer/3/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/search.php?test=query</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=2</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/signup.php</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/hpp/?pp=12</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/images/2.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/userinfo.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/images/1.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/color-printer/3/</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/images/3.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/artists.php?artist=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/3.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/signup.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/images/2.jpg</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/hpp/?pp=12</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/images/1.jpg</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=1</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=2</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=3</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/color-printer/3/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/images/3.jpg</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/3.jpg</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/2.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/hpp/?pp=12</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=6</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=7</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=5</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="" method="post" name="faddentry"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-2/</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/2.jpg&size=160</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/3.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/2.jpg</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/hpp/?pp=12</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=7</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=6</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=5</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/2.jpg&size=160</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-2/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/2.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=4</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/6.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=7</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=6</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=5</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form name='f_addcart' method='POST' action='cart.php'></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form name='f_addcart' method='POST' action='cart.php'></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form name='f_addcart' method='POST' action='cart.php'></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/2.jpg&size=160</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-2/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/3.jpg&size=160</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/6.jpg</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=4</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=6</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form name='f_addcart' method='POST' action='cart.php'></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=7</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form name='f_addcart' method='POST' action='cart.php'></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=5</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form name='f_addcart' method='POST' action='cart.php'></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] User Controllable HTML Element Attribute (Potential XSS)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> submit</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-2/</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-1/</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/3.jpg&size=160</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/6.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=4</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=6</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=7</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=5</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-2/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-1/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/3.jpg&size=160</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-1.html</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=4</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form name='f_addcart' method='POST' action='cart.php'></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=6</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=7</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=5</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/guestbook.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=3</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=1</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=2</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-1/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/4.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/6.jpg&size=160</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=4</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-1.html</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=7</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=5</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=6</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/1.jpg&size=160</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-1/</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/4.jpg</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/6.jpg&size=160</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-1.html</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=4</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=7</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=5</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=6</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/1.jpg&size=160</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-2.html</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=1</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-1/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/5.jpg&size=160</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/4.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/6.jpg&size=160</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-1.html</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=4</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=2</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/5.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=3</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/1.jpg&size=160</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-2.html</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/5.jpg&size=160</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Authentication Request Identified</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/secured/newuser.php</p>
+            <p><strong>Parameter:</strong> uemail</p>
+            <p><strong>Evidence:</strong> upass</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-3/</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/4.jpg&size=160</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-1.html</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/product.php?pic=4</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/5.jpg</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/hpp/params.php?p=valid&pp=12</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-2.html</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/5.jpg&size=160</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/secured/newuser.php</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/4.jpg&size=160</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-3/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-3.html</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/7.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/5.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-2.html</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/hpp/params.php?p=valid&pp=12</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/7.jpg&size=160</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/secured/newuser.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/4.jpg&size=160</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-3/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/7.jpg</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-3.html</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/cart.php</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-2.html</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/hpp/params.php?p=valid&pp=12</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/7.jpg&size=160</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/secured/newuser.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Modern Web Application</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <a href='#' onClick="window.open('./comment.php?pid=1','comment','width=500,height=400')">comment on this picture</a></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-3/</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/7.jpg</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-3.html</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Modern Web Application</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <a href='#' onClick="window.open('./comment.php?pid=7','comment','width=500,height=400')">comment on this picture</a></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/cart.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/hpp/params.php?p=valid&pp=12</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/showimage.php?file=./pictures/7.jpg&size=160</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/secured/newuser.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-3/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-3.html</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/cart.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=3</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/hpp/params.php?p=valid&pp=12</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/secured/newuser.php</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=1</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-3.html</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=3</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/cart.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=2</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/secured/newuser.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=1</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/listproducts.php?artist=2</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/cart.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/cart.php</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/cart.php</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/secured/style.css</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/secured/style.css</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        </body></html>

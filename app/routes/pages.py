@@ -47,3 +47,9 @@ def scan_progress():
 @login_required
 def scan_results():
     return render_template("scan_results.html")
+
+
+@pages_bp.route("/website_scanner")
+@login_required
+def website_scanner():
+    return render_template("website_scanner.html")

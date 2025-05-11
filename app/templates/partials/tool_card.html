@@ -1,5 +1,13 @@
+{% if url == "/website_scanner" %}
+<div class="tool-card" id="website_scanner-btn">
+    <img src="{{ url_for('static', filename='img/icons/' + icon) }}" alt="{{ title }} icon" class="tool-icon">
+    <h3 class="tool-title">{{ title }}</h3>
+    <p class="tool-desc">{{ desc }}</p>
+</div>
+{% else %}
 <div class="tool-card" onclick="location.href='{{ url }}'">
     <img src="{{ url_for('static', filename='img/icons/' + icon) }}" alt="{{ title }} icon" class="tool-icon">
     <h3 class="tool-title">{{ title }}</h3>
     <p class="tool-desc">{{ desc }}</p>
 </div>
+{% endif %}

@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "assets-btn": "/assets",
         "reports-btn": "/reports",
         "new-scan-btn": "/new_scan",
-        "chatbot-btn": "/chatbot_component"
+        "chatbot-btn": "/chatbot_component",
+        "website_scanner-btn": "/website_scanner"  // ✅ Added
     };
 
     Object.entries(routes).forEach(([btnId, route]) => {
@@ -16,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (btn) {
             btn.addEventListener("click", () => {
                 if (route === null) {
-                    // Reload dashboard fully
                     window.location.href = "/";
                     return;
                 }
@@ -26,27 +26,32 @@ document.addEventListener("DOMContentLoaded", function () {
                     .then((html) => {
                         mainContent.innerHTML = html;
 
-                        // 🧠 Dynamically load scanner logic if new_scan
-                        if (route === "/new_scan") {
-                            // Load new_scan.js for tab logic
-                            const scanScriptId = "new-scan-script";
-                            const oldScript = document.getElementById(scanScriptId);
-                            if (oldScript) oldScript.remove();
+                        // ✅ Load zap scanner for both /new_scan and /website_scanner
+                        if (route === "/new_scan" || route === "/website_scanner") {
+                            const zapScriptSrc = "/static/js/zap_scanner.js";
 
-                            const script = document.createElement("script");
-                            script.id = scanScriptId;
-                            script.src = "/static/js/new_scan.js";
-                            script.defer = true;
-                            document.body.appendChild(script);
-
-                            // Optional: also load zap_scanner.js if needed
-                            const existingZAP = document.querySelector("script[src='/static/js/zap_scanner.js']");
+                            // Remove existing zap script
+                            const existingZAP = Array.from(document.scripts).find(s => s.src.includes(zapScriptSrc));
                             if (existingZAP) existingZAP.remove();
 
                             const zapScript = document.createElement("script");
-                            zapScript.src = "/static/js/zap_scanner.js";
+                            zapScript.src = zapScriptSrc;
                             zapScript.type = "module";
+                            zapScript.defer = true;
                             document.body.appendChild(zapScript);
+
+                            // Only /new_scan has new_scan.js
+                            if (route === "/new_scan") {
+                                const scanScriptId = "new-scan-script";
+                                const oldScript = document.getElementById(scanScriptId);
+                                if (oldScript) oldScript.remove();
+
+                                const script = document.createElement("script");
+                                script.id = scanScriptId;
+                                script.src = "/static/js/new_scan.js";
+                                script.defer = true;
+                                document.body.appendChild(script);
+                            }
                         }
 
                         // 🤖 Handle chatbot logic
@@ -109,4 +114,22 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
     });
+});
+
+document.addEventListener("click", function(e) {
+    const card = e.target.closest("#website_scanner-btn");
+    if (card) {
+        console.log("Website Scanner card clicked");
+        e.preventDefault();
+        fetch("/website_scanner")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("main-content").innerHTML = html;
+                // Dynamically import zap_scanner.js as a module after DOM update and call initZapScanner
+                import("/static/js/zap_scanner.js").then(mod => {
+                    mod.initZapScanner();
+                    console.log("zap_scanner.js initialized after DOM update");
+                });
+            });
+    }
 });

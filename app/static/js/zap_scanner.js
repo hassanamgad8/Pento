@@ -1,9 +1,12 @@
-(async function () {
+export async function initZapScanner() {
     const formContainer = document.getElementById("scan-form-container");
     const progressContainer = document.getElementById("scan-progress-container");
     const resultsContainer = document.getElementById("scan-results-container");
 
-    if (!formContainer) return;
+    if (!formContainer) {
+        console.log("zap_scanner.js: #scan-form-container not found");
+        return;
+    }
 
     let currentScanId = null;
     let scanStatusInterval = null;
@@ -45,9 +48,10 @@
 
     const zapForm = document.getElementById("zap-scan-form");
     if (zapForm) {
+        console.log("zap_scanner.js: attaching submit handler to #zap-scan-form");
         zapForm.addEventListener("submit", async function (e) {
             e.preventDefault();
-
+            console.log("zap_scanner.js: form submitted");
             const url = document.getElementById("zap-url").value;
             const spider = document.getElementById("use-spider").checked;
             const ajax = document.getElementById("use-ajax").checked;
@@ -79,6 +83,8 @@
                 alert(`Error starting scan: ${err.message}`);
             }
         });
+    } else {
+        console.log("zap_scanner.js: #zap-scan-form not found");
     }
 
     function startStatusPolling() {
@@ -273,4 +279,6 @@
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
     }
-})();
+
+    console.log("✅ zap_scanner.js loaded.");
+}
