@@ -8,6 +8,7 @@ from app.routes.chatbot import chatbot_bp
 from app.routes.ai_scan import ai_scan_bp
 from app.routes.pages import pages_bp
 from app.routes.zap_scan import zap_bp
+from app.routes.waf import waf_bp
 
 
 
@@ -44,6 +45,7 @@ def create_app():
     app.register_blueprint(ai_scan_bp)
     app.register_blueprint(pages_bp)
     app.register_blueprint(zap_bp)
+    app.register_blueprint(waf_bp)
     
 
 
