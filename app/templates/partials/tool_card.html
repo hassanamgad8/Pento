@@ -4,6 +4,42 @@
     <h3 class="tool-title">{{ title }}</h3>
     <p class="tool-desc">{{ desc }}</p>
 </div>
+{% elif url == "/port-scanner" %}
+<div class="tool-card" id="port-scanner-btn">
+    <img src="{{ url_for('static', filename='images/' + icon) }}" alt="{{ title }} icon" class="tool-icon">
+    <h3 class="tool-title">{{ title }}</h3>
+    <p class="tool-desc">{{ desc }}</p>
+</div>
+{% elif url == "/domain-finder" %}
+<div class="tool-card" id="domain-finder-btn">
+    <img src="{{ url_for('static', filename='images/' + icon) }}" alt="{{ title }} icon" class="tool-icon">
+    <h3 class="tool-title">{{ title }}</h3>
+    <p class="tool-desc">{{ desc }}</p>
+</div>
+{% elif url == "/subdomain-finder" %}
+<div class="tool-card" id="subdomain-finder-btn">
+    <img src="{{ url_for('static', filename='images/' + icon) }}" alt="{{ title }} icon" class="tool-icon">
+    <h3 class="tool-title">{{ title }}</h3>
+    <p class="tool-desc">{{ desc }}</p>
+</div>
+{% elif url == "/sqli-exploiter" %}
+<div class="tool-card" id="sqli-exploiter-btn">
+    <img src="{{ url_for('static', filename='images/' + icon) }}" alt="{{ title }} icon" class="tool-icon">
+    <h3 class="tool-title">{{ title }}</h3>
+    <p class="tool-desc">{{ desc }}</p>
+</div>
+{% elif url == "/whois-lookup" %}
+<div class="tool-card" id="whois-lookup-btn">
+    <img src="{{ url_for('static', filename='images/' + icon) }}" alt="{{ title }} icon" class="tool-icon">
+    <h3 class="tool-title">{{ title }}</h3>
+    <p class="tool-desc">{{ desc }}</p>
+</div>
+{% elif url == "/dns-lookup" %}
+<div class="tool-card" id="dns-lookup-btn">
+    <img src="{{ url_for('static', filename='images/' + icon) }}" alt="{{ title }} icon" class="tool-icon">
+    <h3 class="tool-title">{{ title }}</h3>
+    <p class="tool-desc">{{ desc }}</p>
+</div>
 {% else %}
 <div class="tool-card" onclick="location.href='{{ url }}'">
     <img src="{{ url_for('static', filename='images/' + icon) }}" alt="{{ title }} icon" class="tool-icon">

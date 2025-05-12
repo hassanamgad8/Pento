@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="main-content">
+    <div class="ai-form-scanner" style="max-width: 600px; margin: 2rem auto;">
+        <h1 style="color: var(--primary-color); font-size: 2rem; font-family: 'Courier New', monospace; margin-bottom: 1.5rem;">
+            Domain Finder
+        </h1>
+        <form id="domain-finder-form" style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div>
+                <label for="domain" style="color: var(--primary-color); font-family: monospace;">Domain</label>
+                <input type="text" id="domain" name="domain"
+                    style="width: 100%; margin-top: 0.5rem; background: var(--background-dark); color: var(--primary-color); border: 1px solid var(--primary-color); border-radius: 4px; padding: 0.5rem; font-family: monospace;"
+                    placeholder="Enter domain (e.g. example.com)" required>
+            </div>
+            <button type="submit" class="green-button" style="margin-top: 1rem; font-family: monospace; font-size: 1.1em; padding: 0.7em 0;">
+                Start Scan
+            </button>
+        </form>
+        <div id="domain-results" class="hidden" style="margin-top: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 style="color: var(--primary-color); font-size: 1.2rem; font-family: monospace;">Scan Results</h2>
+                <div>
+                    <button id="pdf-domain-btn" class="green-button" style="margin-left: 1em; font-family: monospace; display: none;">PDF Report</button>
+                </div>
+            </div>
+            <div id="whois-section" style="margin-bottom: 1.5em;">
+                <h3 style="color: var(--primary-color); font-size: 1.1em; font-family: monospace;">General Information</h3>
+                <pre id="whois-output" style="background: #111; color: #0f0; padding: 1em; border-radius: 6px; font-family: monospace; font-size: 1em; margin-top: 0.5em; border: 1px solid var(--primary-color); white-space: pre-wrap; overflow-x: auto;"></pre>
+            </div>
+            <div id="dnsrecon-section">
+                <h3 style="color: var(--primary-color); font-size: 1.1em; font-family: monospace;">Domains</h3>
+                <pre id="dnsrecon-output" style="background: #111; color: #0f0; padding: 1em; border-radius: 6px; font-family: monospace; font-size: 1em; margin-top: 0.5em; border: 1px solid var(--primary-color); white-space: pre-wrap; overflow-x: auto;"></pre>
+            </div>
+        </div>
+        <div id="domain-error-message" class="hidden error-message"></div>
+    </div>
+</div>
+<script type="module">
+    import { initDomainFinder } from '/static/js/domain_finder.js';
+    document.addEventListener('DOMContentLoaded', initDomainFinder);
+</script>
+{% endblock %} 

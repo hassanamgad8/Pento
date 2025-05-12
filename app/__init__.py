@@ -9,6 +9,12 @@ from app.routes.ai_scan import ai_scan_bp
 from app.routes.pages import pages_bp
 from app.routes.zap_scan import zap_bp
 from app.routes.waf import waf_bp
+from app.routes.port_scanner import port_scanner_bp
+from app.routes.domain_finder import domain_finder_bp
+from app.routes.subdomain_finder import subdomain_finder_bp
+from app.routes.sqli_exploiter import sqli_exploiter_bp
+from app.routes.whois_lookup import whois_lookup_bp
+from app.routes.dns_lookup import dns_lookup_bp
 
 
 
@@ -46,6 +52,12 @@ def create_app():
     app.register_blueprint(pages_bp)
     app.register_blueprint(zap_bp)
     app.register_blueprint(waf_bp)
+    app.register_blueprint(port_scanner_bp)
+    app.register_blueprint(domain_finder_bp)
+    app.register_blueprint(subdomain_finder_bp)
+    app.register_blueprint(sqli_exploiter_bp)
+    app.register_blueprint(whois_lookup_bp)
+    app.register_blueprint(dns_lookup_bp)
     
 
 

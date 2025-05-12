@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="main-content">
+    <div class="ai-form-scanner" style="max-width: 600px; margin: 2rem auto;">
+        <h1 style="color: var(--primary-color); font-size: 2rem; font-family: 'Courier New', monospace; margin-bottom: 1.5rem;">
+            Port Scanner
+        </h1>
+        <form id="port-scan-form" style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div>
+                <label for="target" style="color: var(--primary-color); font-family: monospace;">Target</label>
+                <input type="text" id="target" name="target"
+                    style="width: 100%; margin-top: 0.5rem; background: var(--background-dark); color: var(--primary-color); border: 1px solid var(--primary-color); border-radius: 4px; padding: 0.5rem; font-family: monospace;"
+                    placeholder="Enter IP address or hostname" required>
+            </div>
+            <div>
+                <div style="color: var(--primary-color); font-family: monospace; margin-bottom: 0.5rem;">Scan Type</div>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <label style="color: var(--text-primary); font-family: monospace;">
+                        <input type="radio" name="scan_type" value="quick" checked>
+                        <span style="color: var(--primary-color); font-weight: bold;"> Quick Scan</span>
+                        <span style="color: var(--text-secondary); font-size: 0.95em;"> — Fast scan of the most common ports (-F). Perfect for initial reconnaissance.</span>
+                    </label>
+                    <label style="color: var(--text-primary); font-family: monospace;">
+                        <input type="radio" name="scan_type" value="detailed">
+                        <span style="color: var(--primary-color); font-weight: bold;"> Detailed Scan</span>
+                        <span style="color: var(--text-secondary); font-size: 0.95em;"> — Version detection and default scripts (-sV -sC). Identifies service versions and runs default scripts.</span>
+                    </label>
+                    <label style="color: var(--text-primary); font-family: monospace;">
+                        <input type="radio" name="scan_type" value="aggressive">
+                        <span style="color: var(--primary-color); font-weight: bold;"> Aggressive Scan</span>
+                        <span style="color: var(--text-secondary); font-size: 0.95em;"> — Full scan with OS detection (-A). Most comprehensive but also most noticeable.</span>
+                    </label>
+                    <label style="color: var(--text-primary); font-family: monospace;">
+                        <input type="radio" name="scan_type" value="stealth">
+                        <span style="color: var(--primary-color); font-weight: bold;"> Stealth Scan</span>
+                        <span style="color: var(--text-secondary); font-size: 0.95em;"> — SYN scan (-sS) with timing and fragmentation. Less detectable but slower.</span>
+                    </label>
+                </div>
+            </div>
+            <div>
+                <div style="color: var(--primary-color); font-family: monospace; margin-bottom: 0.5rem;">Additional Options</div>
+                <label style="color: var(--text-primary); font-family: monospace; display: flex; align-items: center; gap: 0.5em;">
+                    <input type="checkbox" id="verbose" name="verbose">
+                    <span>Verbose Output <span style="color: var(--text-secondary); font-size: 0.95em;">(-v) Show more detailed scan information</span></span>
+                </label>
+                <label style="color: var(--text-primary); font-family: monospace; display: flex; align-items: center; gap: 0.5em;">
+                    <input type="checkbox" id="timing" name="timing">
+                    <span>Timing Template <span style="color: var(--text-secondary); font-size: 0.95em;">(-T4) Aggressive timing for faster scans</span></span>
+                </label>
+            </div>
+            <button type="submit" class="green-button" style="margin-top: 1rem; font-family: monospace; font-size: 1.1em; padding: 0.7em 0;">
+                Start Scan
+            </button>
+        </form>
+        <div id="scan-results" class="hidden" style="margin-top: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 style="color: var(--primary-color); font-size: 1.2rem; font-family: monospace;">Scan Results</h2>
+                <div>
+                    <button onclick="copyResults()" style="background: none; border: none; color: var(--primary-color); cursor: pointer; font-family: monospace;">Copy Results</button>
+                    <button id="pdf-report-btn" class="green-button" style="margin-left: 1em; font-family: monospace; display: none;">PDF Report</button>
+                </div>
+            </div>
+            <div id="results-content" style="background: #111; color: #0f0; padding: 1em; border-radius: 6px; font-family: monospace; font-size: 1em; margin-top: 0.5em; border: 1px solid var(--primary-color); white-space: pre-wrap; overflow-x: auto;"></div>
+        </div>
+        <div id="error-message" class="hidden error-message"></div>
+    </div>
+</div>
+<script>
+function copyResults() {
+    const resultsContent = document.getElementById('results-content');
+    if (resultsContent) {
+        navigator.clipboard.writeText(resultsContent.textContent)
+            .then(() => {
+                const button = document.querySelector('button[onclick="copyResults()"]');
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            })
+            .catch(err => {
+                console.error('Failed to copy results:', err);
+            });
+    }
+}
+</script>
+<script type="module">
+    import { initPortScanner } from '/static/js/port_scanner.js';
+    document.addEventListener('DOMContentLoaded', initPortScanner);
+</script>
+{% endblock %} 

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="main-content">
+    <div class="ai-form-scanner" style="max-width: 600px; margin: 2rem auto;">
+        <h1 style="color: var(--primary-color); font-size: 2rem; font-family: 'Courier New', monospace; margin-bottom: 1.5rem;">
+            Subdomain Finder
+        </h1>
+        <form id="subdomain-finder-form" style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div>
+                <label for="domain" style="color: var(--primary-color); font-family: monospace;">Domain</label>
+                <input type="text" id="domain" name="domain"
+                    style="width: 100%; margin-top: 0.5rem; background: var(--background-dark); color: var(--primary-color); border: 1px solid var(--primary-color); border-radius: 4px; padding: 0.5rem; font-family: monospace;"
+                    placeholder="Enter domain (e.g. example.com)" required>
+            </div>
+            <button type="submit" class="green-button" style="margin-top: 1rem; font-family: monospace; font-size: 1.1em; padding: 0.7em 0;">
+                Start Scan
+            </button>
+        </form>
+        <div id="subdomain-results" class="hidden" style="margin-top: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 style="color: var(--primary-color); font-size: 1.2rem; font-family: monospace;">Scan Results</h2>
+                <div>
+                    <button id="pdf-subdomain-btn" class="green-button" style="margin-left: 1em; font-family: monospace; display: none;">PDF Report</button>
+                </div>
+            </div>
+            <div id="amass-section">
+                <h3 style="color: var(--primary-color); font-size: 1.1em; font-family: monospace;">Subdomains</h3>
+                <pre id="amass-output" style="background: #111; color: #0f0; padding: 1em; border-radius: 6px; font-family: monospace; font-size: 1em; margin-top: 0.5em; border: 1px solid var(--primary-color); white-space: pre-wrap; overflow-x: auto;"></pre>
+            </div>
+        </div>
+        <div id="subdomain-error-message" class="hidden error-message"></div>
+    </div>
+</div>
+<script type="module">
+    import { initSubdomainFinder } from '/static/js/subdomain_finder.js';
+    document.addEventListener('DOMContentLoaded', initSubdomainFinder);
+</script>
+{% endblock %} 
