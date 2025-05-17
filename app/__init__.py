@@ -42,12 +42,16 @@ def create_app():
     # Create default admin user if none exist
     from werkzeug.security import generate_password_hash
     from app.models import User
+    
     def create_default_user():
         with app.app_context():
+            # Create all tables first
+            db.create_all()
             if not User.query.first():
                 user = User(username='admin', password_hash=generate_password_hash('admin'))
                 db.session.add(user)
                 db.session.commit()
+    
     create_default_user()
 
     # Register blueprints
@@ -89,5 +93,3 @@ def create_app():
         return User.query.get(int(user_id))
 
     return app
-
-
