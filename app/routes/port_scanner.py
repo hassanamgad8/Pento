@@ -5,6 +5,7 @@ import json
 from fpdf import FPDF
 import tempfile
 import os
+from datetime import datetime
 
 port_scanner_bp = Blueprint('port_scanner', __name__)
 
@@ -70,6 +71,8 @@ def port_scanner():
 @port_scanner_bp.route('/api/port-scan', methods=['POST'])
 @login_required
 def start_port_scan():
+    from app import db
+    from app.models import Asset
     data = request.get_json()
     target = data.get('target')
     scan_type = data.get('scan_type', 'quick')
@@ -83,6 +86,39 @@ def start_port_scan():
     
     if "error" in result:
         return jsonify(result), 500
+
+    # --- Parse Nmap output and insert Asset ---
+    output = result.get("output", "")
+    hostname = target
+    ip = ""
+    ports = []
+    services = []
+    technologies = []
+    for line in output.splitlines():
+        if line.startswith("Nmap scan report for"):
+            parts = line.split()
+            if len(parts) >= 5:
+                ip = parts[-1]
+        elif "/tcp" in line or "/udp" in line:
+            parts = line.split()
+            if len(parts) >= 3:
+                port_proto = parts[0]
+                port = port_proto.split("/")[0]
+                ports.append(port)
+                services.append(parts[2])
+    asset = Asset(
+        hostname=hostname,
+        ip=ip,
+        ports=",".join(ports),
+        services=",".join(services),
+        technologies="",
+        asset_type='IP Address',
+        source='Port Scanner',
+        last_seen=datetime.utcnow()
+    )
+    db.session.add(asset)
+    db.session.commit()
+    # --- End parse/insert ---
         
     return jsonify(result)
 

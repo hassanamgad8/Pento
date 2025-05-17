@@ -1,0 +1,101 @@
+
+    <html>
+    <head><style>
+    body { background: #111; color: #eee; font-family: monospace; padding: 2rem; }
+    h1 { color: #0f0; }
+    .alert { border-bottom: 1px solid #444; margin-bottom: 1rem; padding-bottom: 1rem; }
+    </style></head>
+    <body>
+    <h1>OWASP ZAP Scan Report</h1>
+    <p><strong>Target:</strong> http://testphp.vulnweb.com/</p>
+    <p><strong>Total Alerts:</strong> 11</p>
+    <hr>
+    
+        <div class='alert'>
+            <h3>[Medium] Missing Anti-clickjacking Header</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> x-frame-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Charset Mismatch (Header Versus Meta Content-Type Charset)</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Content Security Policy (CSP) Header Not Set</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Medium] Absence of Anti-CSRF Tokens</h3>
+            <p><strong>Confidence:</strong> Low</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> <form action="search.php?test=query" method="post"></p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Version Information via "Server" HTTP Response Header Field</h3>
+            <p><strong>Confidence:</strong> High</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] X-Content-Type-Options Header Missing</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> x-content-type-options</p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> X-Powered-By: PHP/5.6.40-38+ubuntu20.04.1+deb.sury.org+1</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Tech Detected - PHP</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> PHP/5.6.40</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Tech Detected - Ubuntu</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> ubuntu</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Tech Detected - Nginx</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> nginx/1.19.0</p>
+        </div>
+        
+        <div class='alert'>
+            <h3>[Informational] Tech Detected - Adobe Flash</h3>
+            <p><strong>Confidence:</strong> Medium</p>
+            <p><strong>URL:</strong> http://testphp.vulnweb.com/</p>
+            <p><strong>Parameter:</strong> </p>
+            <p><strong>Evidence:</strong> </p>
+        </div>
+        </body></html>

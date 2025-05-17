@@ -1,3 +1,4 @@
+console.log("script.js loaded");
 document.addEventListener("DOMContentLoaded", function () {
     const mainContent = document.getElementById("main-content");
 
@@ -31,6 +32,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     .then((res) => res.text())
                     .then((html) => {
                         mainContent.innerHTML = html;
+                        history.pushState({ route }, '', route); // Update the URL
+
+                        // Dynamically load attack_surface.js if loading the Attack Surface page
+                        if (route === "/attack_surface") {
+                            const existingScript = document.querySelector('script[src="/static/js/attack_surface.js"]');
+                            if (existingScript) existingScript.remove();
+                            const script = document.createElement('script');
+                            script.src = '/static/js/attack_surface.js';
+                            script.defer = true;
+                            document.body.appendChild(script);
+                        }
 
                         // ✅ Load zap scanner for both /new_scan and /website_scanner
                         if (route === "/new_scan" || route === "/website_scanner") {
@@ -163,7 +175,28 @@ document.addEventListener("DOMContentLoaded", function () {
                         console.error("Page load error:", err);
                     });
             });
+        } else {
+            console.log("Button not found:", btnId);
         }
+    });
+
+    // Handle browser back/forward navigation
+    window.addEventListener('popstate', function(event) {
+        const route = window.location.pathname;
+        fetch(route)
+            .then(res => res.text())
+            .then(html => {
+                mainContent.innerHTML = html;
+                // Dynamically load attack_surface.js if loading the Attack Surface page
+                if (route === "/attack_surface") {
+                    const existingScript = document.querySelector('script[src="/static/js/attack_surface.js"]');
+                    if (existingScript) existingScript.remove();
+                    const script = document.createElement('script');
+                    script.src = '/static/js/attack_surface.js';
+                    script.defer = true;
+                    document.body.appendChild(script);
+                }
+            });
     });
 });
 

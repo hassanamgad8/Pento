@@ -1,25 +1,55 @@
-<h2>🔎 Attack Surface</h2>
-<div>This area will display discovered endpoints, parameters, and surface-level details from recon tools.</div>
-
-<!-- Optional placeholder table -->
-<table style="margin-top:1rem; width:100%; border: 1px solid #0f0;">
-  <thead>
-    <tr style="background:#111; color:#0f0;">
-      <th>Type</th>
-      <th>Value</th>
-      <th>Source</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Endpoint</td>
-      <td>/login</td>
-      <td>AI Crawler</td>
-    </tr>
-    <tr>
-      <td>Param</td>
-      <td>?user=admin</td>
-      <td>OWASP ZAP</td>
-    </tr>
-  </tbody>
-</table>
+{% extends "layout.html" %}
+{% block title %}Attack Surface{% endblock %}
+{% block head_extra %}
+{% endblock %}
+{% block content %}
+    <div class="summary-panel" id="summary-panel"></div>
+    <h2 style="margin-left: 2.5rem; margin-top: 2rem;">🔎 Attack Surface</h2>
+    <div class="globe-container">
+        <div id="globeViz"></div>
+    </div>
+    <div class="tabs-bar">
+        <div class="tab-btn active" data-tab="domains">Domains</div>
+        <div class="tab-btn" data-tab="ips">IPs</div>
+        <div class="tab-btn" data-tab="subdomains">Subdomains</div>
+        <div class="tab-btn" data-tab="endpoints">Endpoints</div>
+        <div class="tab-btn" data-tab="technologies">Technologies</div>
+        <div class="tab-btn" data-tab="ports">Ports</div>
+        <input type="text" class="search-bar" id="asset-search" placeholder="Search...">
+    </div>
+    <div class="table-wrap">
+        <table id="table-domains" class="tab-table active display">
+            <thead>
+                <tr><th>Type</th><th>Value</th><th>Risk</th><th>Source</th><th>First Seen</th><th>Last Seen</th><th>Tags</th><th>Actions</th></tr>
+            </thead><tbody></tbody>
+        </table>
+        <table id="table-ips" class="tab-table display">
+            <thead>
+                <tr><th>Type</th><th>Value</th><th>Risk</th><th>Source</th><th>First Seen</th><th>Last Seen</th><th>Tags</th><th>Actions</th></tr>
+            </thead><tbody></tbody>
+        </table>
+        <table id="table-subdomains" class="tab-table display">
+            <thead>
+                <tr><th>Type</th><th>Value</th><th>Risk</th><th>Source</th><th>First Seen</th><th>Last Seen</th><th>Tags</th><th>Actions</th></tr>
+            </thead><tbody></tbody>
+        </table>
+        <table id="table-endpoints" class="tab-table display">
+            <thead>
+                <tr><th>Type</th><th>Value</th><th>Risk</th><th>Source</th><th>First Seen</th><th>Last Seen</th><th>Tags</th><th>Actions</th></tr>
+            </thead><tbody></tbody>
+        </table>
+        <table id="table-technologies" class="tab-table display">
+            <thead>
+                <tr><th>Type</th><th>Value</th><th>Risk</th><th>Source</th><th>First Seen</th><th>Last Seen</th><th>Tags</th><th>Actions</th></tr>
+            </thead><tbody></tbody>
+        </table>
+        <table id="table-ports" class="tab-table display">
+            <thead>
+                <tr><th>Type</th><th>Value</th><th>Risk</th><th>Source</th><th>First Seen</th><th>Last Seen</th><th>Tags</th><th>Actions</th></tr>
+            </thead><tbody></tbody>
+        </table>
+    </div>
+{% endblock %}
+{% block scripts_extra %}
+    <script src="{{ url_for('static', filename='js/attack_surface.js') }}"></script>
+{% endblock %}

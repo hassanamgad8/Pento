@@ -1,3 +1,56 @@
 <h2>📡 Discovered Assets</h2>
-<p>This will track hostnames, IPs, open ports, services, technologies discovered during scans.</p>
-<!-- Can be populated from Nmap, AI, or manual input -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<style>
+    .risk-high { color: #f00; font-weight: bold; }
+    .risk-med { color: #ff0; font-weight: bold; }
+    .risk-low { color: #0f0; font-weight: bold; }
+    .tag-chip { display: inline-block; background: #222; color: #0f0; border-radius: 8px; padding: 2px 8px; margin: 0 2px; font-size: 0.9em; cursor: pointer; }
+    .action-icon { cursor: pointer; margin: 0 4px; font-size: 1.2em; }
+    .action-icon:hover { color: #0f0; }
+</style>
+<table id="assets-table" class="display" style="width:100%; border:1px solid #0f0; margin-top:1rem;">
+  <thead>
+    <tr style="background:#111; color:#0f0;">
+      <th>Asset Type</th>
+      <th>Value</th>
+      <th>Risk</th>
+      <th>Tags</th>
+      <th>Source</th>
+      <th>Last Seen</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for asset in assets %}
+    <tr>
+      <td>{{ asset.asset_type or 'Unknown' }}</td>
+      <td>{{ asset.hostname or asset.ip or '-' }}</td>
+      <td>
+        {% if asset.risk == 'High' %}<span class="risk-high">High</span>{% elif asset.risk == 'Med' %}<span class="risk-med">Med</span>{% else %}<span class="risk-low">Low</span>{% endif %}
+      </td>
+      <td>
+        {% for tag in (asset.tags.split(',') if asset.tags else []) %}
+          {% if tag.strip() %}<span class="tag-chip">#{{ tag.strip() }}</span>{% endif %}
+        {% endfor %}
+      </td>
+      <td>{{ asset.source or '-' }}</td>
+      <td>{{ asset.last_seen.strftime('%Y-%m-%d %H:%M') if asset.last_seen else '-' }}</td>
+      <td>
+        <span class="action-icon" title="View Details">🔍</span>
+        <span class="action-icon" title="Block / Ignore">🚫</span>
+        <span class="action-icon" title="Re-Scan">🔄</span>
+        <span class="action-icon" title="Generate Report">📄</span>
+        <span class="action-icon" title="Add Notes / Tags">📝</span>
+        <span class="action-icon" title="Flag as Critical">❗</span>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#assets-table').DataTable();
+});
+</script>

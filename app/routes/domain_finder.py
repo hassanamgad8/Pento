@@ -4,6 +4,8 @@ import paramiko
 from fpdf import FPDF
 import tempfile
 import os
+import re
+from datetime import datetime
 
 domain_finder_bp = Blueprint('domain_finder', __name__)
 
@@ -46,6 +48,8 @@ def domain_finder():
 @domain_finder_bp.route('/api/domain-finder', methods=['POST'])
 @login_required
 def api_domain_finder():
+    from app import db
+    from app.models import Asset
     data = request.get_json()
     domain = data.get('domain')
     if not domain:
@@ -53,6 +57,35 @@ def api_domain_finder():
     result = run_domain_tools(domain)
     if "error" in result:
         return jsonify(result), 500
+
+    # --- Robust domain extraction ---
+    dnsrecon_output = result.get("dnsrecon", "")
+    discovered_domains = set()
+    domain_regex = re.compile(r'([a-zA-Z0-9_.-]+\.[a-zA-Z]{2,})')
+    ip_regex = re.compile(r'^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$')
+    for line in dnsrecon_output.splitlines():
+        matches = domain_regex.findall(line)
+        for match in matches:
+            # Ignore IP addresses and short tokens
+            if not ip_regex.match(match) and len(match) > 3:
+                discovered_domains.add(match.lower())
+    print('Discovered domains:', discovered_domains)
+    # Avoid duplicates in DB
+    existing = {a.hostname for a in Asset.query.filter(Asset.hostname.in_(discovered_domains)).all()}
+    for d in discovered_domains:
+        if d not in existing:
+            try:
+                asset = Asset(hostname=d, asset_type='Domain', source='Domain Finder', last_seen=datetime.utcnow())
+                db.session.add(asset)
+                print(f'Added asset: {d}')
+            except Exception as e:
+                print(f'Error adding asset {d}:', e)
+    try:
+        db.session.commit()
+    except Exception as e:
+        print('DB commit error:', e)
+    # --- End robust extraction ---
+
     return jsonify(result)
 
 @domain_finder_bp.route('/api/domain-finder/pdf', methods=['POST'])

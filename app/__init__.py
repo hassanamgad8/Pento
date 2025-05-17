@@ -39,6 +39,17 @@ def create_app():
     migrate.init_app(app, db)
     login_manager.init_app(app)
 
+    # Create default admin user if none exist
+    from werkzeug.security import generate_password_hash
+    from app.models import User
+    def create_default_user():
+        with app.app_context():
+            if not User.query.first():
+                user = User(username='admin', password_hash=generate_password_hash('admin'))
+                db.session.add(user)
+                db.session.commit()
+    create_default_user()
+
     # Register blueprints
     from app.routes.auth import auth_bp
     from app.routes.dashboard import dashboard_bp

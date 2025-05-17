@@ -5,6 +5,7 @@ import time
 import os
 import json
 from app.utils.zap_report_writer import save_html_report, save_pdf_report_from_html
+from datetime import datetime
 
 # Create blueprint
 zap_bp = Blueprint("zap", __name__)
@@ -168,6 +169,34 @@ def zap_scan_status():
                         with open(json_path, "w") as f:
                             json.dump(alerts, f)
                         
+                        # --- Insert Asset and AttackSurface entries ---
+                        from app import db
+                        from app.models import Asset, AttackSurface
+                        # Add the scanned site as an Asset
+                        asset = Asset(
+                            hostname=url,
+                            asset_type='Website',
+                            source='Website Scanner',
+                            last_seen=datetime.utcnow(),
+                            risk='Med'
+                        )
+                        db.session.add(asset)
+                        # Add endpoints as AttackSurface
+                        endpoints = set()
+                        for alert in alerts:
+                            if 'url' in alert:
+                                endpoints.add(alert['url'])
+                        for ep in endpoints:
+                            surface = AttackSurface(
+                                scan_id=None,
+                                endpoint=ep,
+                                param='',
+                                source='Website Scanner'
+                            )
+                            db.session.add(surface)
+                        db.session.commit()
+                        # --- End insert ---
+                        
                         # Update scan info with report paths
                         scan_info["reports"] = {
                             "html": html_path.replace("app/static", "/static"),
@@ -198,6 +227,34 @@ def zap_scan_status():
                 json_path = os.path.join("app/static/reports", json_filename)
                 with open(json_path, "w") as f:
                     json.dump(alerts, f)
+                
+                # --- Insert Asset and AttackSurface entries ---
+                from app import db
+                from app.models import Asset, AttackSurface
+                # Add the scanned site as an Asset
+                asset = Asset(
+                    hostname=url,
+                    asset_type='Website',
+                    source='Website Scanner',
+                    last_seen=datetime.utcnow(),
+                    risk='Med'
+                )
+                db.session.add(asset)
+                # Add endpoints as AttackSurface
+                endpoints = set()
+                for alert in alerts:
+                    if 'url' in alert:
+                        endpoints.add(alert['url'])
+                for ep in endpoints:
+                    surface = AttackSurface(
+                        scan_id=None,
+                        endpoint=ep,
+                        param='',
+                        source='Website Scanner'
+                    )
+                    db.session.add(surface)
+                db.session.commit()
+                # --- End insert ---
                 
                 # Update scan info with report paths
                 scan_info["reports"] = {

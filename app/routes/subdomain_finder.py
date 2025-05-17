@@ -4,6 +4,8 @@ import paramiko
 from fpdf import FPDF
 import tempfile
 import os
+from datetime import datetime
+import re
 
 subdomain_finder_bp = Blueprint('subdomain_finder', __name__)
 
@@ -38,6 +40,8 @@ def subdomain_finder():
 @subdomain_finder_bp.route('/api/subdomain-finder', methods=['POST'])
 @login_required
 def api_subdomain_finder():
+    from app import db
+    from app.models import Asset
     data = request.get_json()
     domain = data.get('domain')
     if not domain:
@@ -45,6 +49,30 @@ def api_subdomain_finder():
     result = run_amass(domain)
     if result.startswith("Error:"):
         return jsonify({"error": result}), 500
+
+    # --- Parse amass output and insert Assets ---
+    discovered_subdomains = set()
+    domain_regex = re.compile(r'([a-zA-Z0-9_.-]+\.[a-zA-Z]{2,})')
+    for line in result.splitlines():
+        matches = domain_regex.findall(line)
+        for match in matches:
+            discovered_subdomains.add(match.lower())
+    print('Discovered subdomains:', discovered_subdomains)
+    existing = {a.hostname for a in Asset.query.filter(Asset.hostname.in_(discovered_subdomains)).all()}
+    for d in discovered_subdomains:
+        if d not in existing:
+            try:
+                asset = Asset(hostname=d, asset_type='Subdomain', source='Subdomain Finder', last_seen=datetime.utcnow())
+                db.session.add(asset)
+                print(f'Added asset: {d}')
+            except Exception as e:
+                print(f'Error adding asset {d}:', e)
+    try:
+        db.session.commit()
+    except Exception as e:
+        print('DB commit error:', e)
+    # --- End parse/insert ---
+
     return jsonify({"amass": result})
 
 @subdomain_finder_bp.route('/api/subdomain-finder/pdf', methods=['POST'])

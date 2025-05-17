@@ -6,6 +6,8 @@
     <title>{% block title %}Pento Security{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/attack_surface.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     {% block head_extra %}{% endblock %}
     <style>
@@ -23,6 +25,9 @@
     <canvas id="matrix"></canvas>
     {% block content %}{% endblock %}
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://unpkg.com/globe.gl"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script src="{{ url_for('static', filename='js/sidebar.js') }}"></script>
     {% block scripts_extra %}{% endblock %}

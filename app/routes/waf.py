@@ -5,6 +5,7 @@ import datetime
 import shutil
 import sys
 import os
+from datetime import datetime
 
 waf_bp = Blueprint("waf", __name__)
 
@@ -21,6 +22,8 @@ def check_wafw00f_installed():
 @waf_bp.route("/api/waf-scan", methods=['POST'])
 @login_required
 def waf_scan():
+    from app import db
+    from app.models import Asset
     if not check_wafw00f_installed():
         return jsonify({"error": "wafw00f not found. Install it using: pip install wafw00f"}), 400
 
@@ -46,7 +49,7 @@ def waf_scan():
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
         
         # Save the output to a file
-        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f"waf_output_{timestamp}.txt"
         output_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'reports')
         os.makedirs(output_dir, exist_ok=True)
@@ -54,6 +57,27 @@ def waf_scan():
         
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(result.stdout)
+
+        # --- Parse wafw00f output and insert Asset ---
+        waf_output = result.stdout
+        waf_name = None
+        for line in waf_output.splitlines():
+            if "is behind" in line:
+                waf_name = line.split("is behind")[-1].strip()
+                break
+        if not waf_name:
+            waf_name = "Unknown WAF"
+        asset = Asset(
+            hostname=target,
+            asset_type='WAF',
+            source='WAF Detector',
+            last_seen=datetime.now(),
+            tags=waf_name,
+            risk='Med'
+        )
+        db.session.add(asset)
+        db.session.commit()
+        # --- End parse/insert ---
 
         return jsonify({
             "output": result.stdout,

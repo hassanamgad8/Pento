@@ -1,0 +1,35 @@
+body { background: #111; color: #fff; font-family: 'Fira Mono', 'Consolas', monospace; }
+.summary-panel { display: flex; gap: 2rem; margin: 2rem auto 1.5rem auto; justify-content: center; }
+.summary-card {
+    background: #181818;
+    border: 2px solid #0f0;
+    border-radius: 16px;
+    padding: 1.2rem 2.5rem;
+    text-align: center;
+    min-width: 120px;
+    box-shadow: 0 0 12px #0f08;
+}
+.summary-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.summary-card .count { font-size: 2.2rem; font-weight: bold; color: #0f0; }
+.summary-card .label { font-size: 1.1rem; color: #aaa; }
+.globe-container { display: flex; justify-content: center; align-items: center; margin: 0 0 2rem 0; }
+#globeViz { width: 400px; height: 400px; border-radius: 50%; box-shadow: 0 0 40px #0f08; background: #181818; }
+.tabs-bar { display: flex; align-items: center; gap: 0.5rem; margin: 2rem auto 0.5rem auto; justify-content: flex-start; max-width: 1200px; }
+.tab-btn { padding: 0.6rem 2.2rem; border-radius: 8px 8px 0 0; background: #181818; color: #0f0; cursor: pointer; font-weight: bold; border: 2px solid #0f0; border-bottom: none; font-size: 1.1rem; transition: background 0.2s, color 0.2s; }
+.tab-btn.active { background: #0f0; color: #111; }
+.search-bar { margin-left: auto; background: #222; color: #0f0; border: 1px solid #0f0; border-radius: 6px; padding: 0.5rem 1rem; font-size: 1rem; }
+.table-wrap { background: #181818; border-radius: 0 0 12px 12px; padding: 1rem; max-width: 1200px; margin: 0 auto; }
+.tab-table { display: none; }
+.tab-table.active { display: table; width: 100%; }
+th, td { text-align: left; }
+th { color: #0f0; font-size: 1.1rem; }
+.risk-high { color: #f00; font-weight: bold; }
+.risk-med { color: #ff0; font-weight: bold; }
+.risk-low { color: #0f0; font-weight: bold; }
+.risk-info { color: #0ff; font-weight: bold; }
+.tag-chip { display: inline-block; background: #222; color: #0f0; border-radius: 8px; padding: 2px 8px; margin: 0 2px; font-size: 0.9em; cursor: pointer; }
+.action-icon { cursor: pointer; margin: 0 4px; font-size: 1.2em; }
+.action-icon:hover { color: #0f0; }
+.dataTables_wrapper .dataTables_filter input { background: #222; color: #0f0; border: 1px solid #0f0; }
+.dataTables_wrapper .dataTables_length select { background: #222; color: #0f0; border: 1px solid #0f0; }
+.highlight-row { background: #0f08 !important; color: #fff !important; } 

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Scans</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Active Scans</h1>
+    <table id="active-scans-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for scan in active_scans %}
+            <tr>
+                <td>{{ scan.id }}</td>
+                <td>{{ scan.type }}</td>
+                <td>{{ scan.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Recent Activities</h2>
+    <ul id="recent-activities-list">
+        {% for activity in recent_activities %}
+        <li>{{ activity.description }} - {{ activity.timestamp }}</li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        function updateData() {
+            fetch('/api/active-scans')
+                .then(response => response.json())
+                .then(data => {
+                    const activeScansTable = document.getElementById('active-scans-table').getElementsByTagName('tbody')[0];
+                    const recentActivitiesList = document.getElementById('recent-activities-list');
+                    
+                    // Update active scans
+                    activeScansTable.innerHTML = '';
+                    data.active_scans.forEach(scan => {
+                        const row = activeScansTable.insertRow();
+                        row.insertCell(0).textContent = scan.id;
+                        row.insertCell(1).textContent = scan.type;
+                        row.insertCell(2).textContent = scan.status;
+                    });
+                    
+                    // Update recent activities
+                    recentActivitiesList.innerHTML = '';
+                    data.recent_activities.forEach(activity => {
+                        const li = document.createElement('li');
+                        li.textContent = `${activity.description} - ${activity.timestamp}`;
+                        recentActivitiesList.appendChild(li);
+                    });
+                });
+        }
+
+        // Poll every 5 seconds
+        setInterval(updateData, 5000);
+        updateData(); // Initial load
+    </script>
+</body>
+</html> 
