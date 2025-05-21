@@ -18,20 +18,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Matrix rain effect
     const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    const fontSize = 16;
+    const fontSize = 28;
     const columns = Math.floor(canvas.width / fontSize);
     const drops = Array(columns).fill(1);
 
     function drawMatrix() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.005)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#00FF33';
-        ctx.font = `${fontSize}px monospace`;
-    
+        ctx.font = `bold ${fontSize}px monospace`;
         drops.forEach((y, index) => {
             const text = characters[Math.floor(Math.random() * characters.length)];
+            ctx.shadowColor = '#00ff00';
+            ctx.shadowBlur = 16;
+            ctx.fillStyle = '#00ff00';
             ctx.fillText(text, index * fontSize, y * fontSize);
-    
+            ctx.shadowBlur = 0;
             if (y * fontSize > canvas.height && Math.random() > 0.975) {
                 drops[index] = 0;
             }
