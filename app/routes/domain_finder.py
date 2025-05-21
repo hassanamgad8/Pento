@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify, send_file
-from flask_login import login_required
+from flask_login import login_required, current_user
 import paramiko
 from fpdf import FPDF
 import tempfile
@@ -49,15 +49,21 @@ def domain_finder():
 @login_required
 def api_domain_finder():
     from app import db
-    from app.models import Asset
+    from app.models import Asset, Scan, RecentActivity
     data = request.get_json()
     domain = data.get('domain')
     if not domain:
         return jsonify({"error": "Domain is required"}), 400
+    # Create Scan entry (status: running)
+    scan = Scan(type='Domain Finder', status='running', started_at=datetime.utcnow(), user_id=current_user.id)
+    db.session.add(scan)
+    db.session.commit()
     result = run_domain_tools(domain)
     if "error" in result:
+        scan.status = 'finished'
+        scan.finished_at = datetime.utcnow()
+        db.session.commit()
         return jsonify(result), 500
-
     # --- Robust domain extraction ---
     dnsrecon_output = result.get("dnsrecon", "")
     discovered_domains = set()
@@ -66,26 +72,25 @@ def api_domain_finder():
     for line in dnsrecon_output.splitlines():
         matches = domain_regex.findall(line)
         for match in matches:
-            # Ignore IP addresses and short tokens
             if not ip_regex.match(match) and len(match) > 3:
                 discovered_domains.add(match.lower())
-    print('Discovered domains:', discovered_domains)
-    # Avoid duplicates in DB
     existing = {a.hostname for a in Asset.query.filter(Asset.hostname.in_(discovered_domains)).all()}
     for d in discovered_domains:
         if d not in existing:
             try:
                 asset = Asset(hostname=d, asset_type='Domain', source='Domain Finder', last_seen=datetime.utcnow())
                 db.session.add(asset)
-                print(f'Added asset: {d}')
             except Exception as e:
-                print(f'Error adding asset {d}:', e)
-    try:
-        db.session.commit()
-    except Exception as e:
-        print('DB commit error:', e)
+                pass
+    # Update Scan entry to finished
+    scan.status = 'finished'
+    scan.finished_at = datetime.utcnow()
+    db.session.commit()
+    # Log RecentActivity
+    activity = RecentActivity(description=f"Domain scan on {domain} completed", user_id=current_user.id, scan_id=scan.id)
+    db.session.add(activity)
+    db.session.commit()
     # --- End robust extraction ---
-
     return jsonify(result)
 
 @domain_finder_bp.route('/api/domain-finder/pdf', methods=['POST'])

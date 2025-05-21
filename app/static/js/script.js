@@ -198,6 +198,94 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
     });
+
+    // === Real-time Dashboard Updates ===
+    // Add Chart.js CDN
+    if (!document.getElementById('chartjs-cdn')) {
+        const chartScript = document.createElement('script');
+        chartScript.id = 'chartjs-cdn';
+        chartScript.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+        document.head.appendChild(chartScript);
+    }
+    let activeScansPie = null;
+    function updateActiveScansLegend(data) {
+        const counts = [data.queued_scans.length, data.running_scans.length, data.finished_scans.length];
+        const labels = ['Queued', 'Running', 'Finished'];
+        const colors = ['#ff9800', '#2196f3', '#4caf50'];
+        let legendHtml = '';
+        labels.forEach((label, i) => {
+            legendHtml += `<span style=\"display:inline-block;width:18px;height:18px;background:${colors[i]};border-radius:4px;margin-right:8px;vertical-align:middle;\"></span> <span style=\"font-weight:bold;\">${label}:</span> <b>${counts[i]}</b> &nbsp;&nbsp;`;
+        });
+        document.getElementById('active-scans-legend').innerHTML = legendHtml;
+    }
+    function updateRecentActivityTimeline(data) {
+        const timeline = document.getElementById('recent-activity-timeline');
+        if (!timeline) return;
+        let html = '';
+        if (!data.recent_activities.length) {
+            html = '<li style="color:#888;text-align:center;">No recent activity available.</li>';
+        } else {
+            data.recent_activities.forEach(activity => {
+                // Choose icon and badge color by scan type (if available)
+                let icon = '📝';
+                let badge = '<span style="background:#222;color:#0f0;padding:2px 8px;border-radius:8px;font-size:0.9em;margin-right:8px;">Scan</span>';
+                if (activity.description.toLowerCase().includes('port scan')) { icon = '🌐'; badge = '<span style="background:#2196f3;color:#fff;padding:2px 8px;border-radius:8px;font-size:0.9em;margin-right:8px;">Port</span>'; }
+                if (activity.description.toLowerCase().includes('domain')) { icon = '🌍'; badge = '<span style="background:#4caf50;color:#fff;padding:2px 8px;border-radius:8px;font-size:0.9em;margin-right:8px;">Domain</span>'; }
+                if (activity.description.toLowerCase().includes('subdomain')) { icon = '🧩'; badge = '<span style="background:#ff9800;color:#fff;padding:2px 8px;border-radius:8px;font-size:0.9em;margin-right:8px;">Subdomain</span>'; }
+                if (activity.description.toLowerCase().includes('waf')) { icon = '🛡️'; badge = '<span style="background:#9c27b0;color:#fff;padding:2px 8px;border-radius:8px;font-size:0.9em;margin-right:8px;">WAF</span>'; }
+                if (activity.description.toLowerCase().includes('website')) { icon = '🖥️'; badge = '<span style="background:#00bcd4;color:#fff;padding:2px 8px;border-radius:8px;font-size:0.9em;margin-right:8px;">Web</span>'; }
+                if (activity.description.toLowerCase().includes('wordpress')) { icon = '⚙️'; badge = '<span style="background:#607d8b;color:#fff;padding:2px 8px;border-radius:8px;font-size:0.9em;margin-right:8px;">WP</span>'; }
+                if (activity.description.toLowerCase().includes('sqli')) { icon = '💉'; badge = '<span style="background:#e91e63;color:#fff;padding:2px 8px;border-radius:8px;font-size:0.9em;margin-right:8px;">SQLi</span>'; }
+                if (activity.description.toLowerCase().includes('xss')) { icon = '⚡'; badge = '<span style="background:#ffc107;color:#222;padding:2px 8px;border-radius:8px;font-size:0.9em;margin-right:8px;">XSS</span>'; }
+                if (activity.description.toLowerCase().includes('whois')) { icon = '🔎'; badge = '<span style="background:#607d8b;color:#fff;padding:2px 8px;border-radius:8px;font-size:0.9em;margin-right:8px;">Whois</span>'; }
+                if (activity.description.toLowerCase().includes('dns')) { icon = '📡'; badge = '<span style="background:#00bcd4;color:#fff;padding:2px 8px;border-radius:8px;font-size:0.9em;margin-right:8px;">DNS</span>'; }
+                html += `<li style=\"margin-bottom:1em;display:flex;align-items:center;\"><span style=\"font-size:1.3em;margin-right:10px;\">${icon}</span>${badge}<span style=\"color:#0f0;font-family:monospace;font-size:1em;margin-right:10px;\">${activity.timestamp.replace('T',' ').slice(0,19)}</span> <span style=\"color:#fff;\">${activity.description}</span></li>`;
+            });
+        }
+        timeline.innerHTML = html;
+    }
+    function updateActiveScansAndRecentActivity() {
+        fetch('/api/active-scans')
+            .then(res => res.json())
+            .then(data => {
+                updateActiveScansLegend(data);
+                updateRecentActivityTimeline(data);
+            });
+    }
+    function updateAttackSurfaceSummary() {
+        fetch('/api/attack_surface_stats')
+            .then(res => res.json())
+            .then(stats => {
+                if (document.getElementById('ip-address-count')) document.getElementById('ip-address-count').textContent = stats.ips || 0;
+                if (document.getElementById('hostnames-count')) document.getElementById('hostnames-count').textContent = stats.domains || 0;
+                if (document.getElementById('port-count')) document.getElementById('port-count').textContent = stats.open_ports || 0;
+                if (document.getElementById('protocol-count')) document.getElementById('protocol-count').textContent = stats.subdomains || 0;
+                if (document.getElementById('services-count')) document.getElementById('services-count').textContent = stats.endpoints || 0;
+                if (document.getElementById('technologies-count')) document.getElementById('technologies-count').textContent = stats.technologies || 0;
+            });
+    }
+    function updateRiskScore() {
+        fetch('/api/risk_score')
+            .then(res => res.json())
+            .then(data => {
+                const val = document.getElementById('risk-score-value');
+                const desc = document.getElementById('risk-score-desc');
+                if (val) {
+                    val.textContent = data.score;
+                    val.style.color = data.color;
+                }
+                if (desc) desc.textContent = data.desc;
+            });
+    }
+    // Only run on dashboard
+    if (window.location.pathname === '/' || window.location.pathname === '/dashboard') {
+        updateActiveScansAndRecentActivity();
+        updateAttackSurfaceSummary();
+        updateRiskScore();
+        setInterval(updateActiveScansAndRecentActivity, 5000);
+        setInterval(updateAttackSurfaceSummary, 5000);
+        setInterval(updateRiskScore, 10000);
+    }
 });
 
 document.addEventListener("click", function(e) {

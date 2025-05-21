@@ -51,6 +51,49 @@
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script>
 $(document).ready(function() {
-    $('#assets-table').DataTable();
+    let dataTable = null;
+    function renderAssets(assets) {
+        var tbody = $('#assets-table tbody');
+        tbody.empty();
+        if (!assets.length) {
+            tbody.append('<tr><td colspan="7" style="text-align:center;color:#f00;">No assets found.</td></tr>');
+        } else {
+            assets.forEach(function(asset) {
+                var riskClass = asset.risk === 'High' ? 'risk-high' : (asset.risk === 'Med' ? 'risk-med' : 'risk-low');
+                var tags = (asset.tags || []).map(function(tag) {
+                    return tag.trim() ? `<span class='tag-chip'>#${tag.trim()}</span>` : '';
+                }).join(' ');
+                var row = `<tr>
+                    <td>${asset.type || 'Unknown'}</td>
+                    <td>${asset.value || '-'}</td>
+                    <td><span class='${riskClass}'>${asset.risk}</span></td>
+                    <td>${tags}</td>
+                    <td>${asset.source || '-'}</td>
+                    <td>${asset.last_seen || '-'}</td>
+                    <td>
+                        <span class="action-icon" title="View Details">🔍</span>
+                        <span class="action-icon" title="Block / Ignore">🚫</span>
+                        <span class="action-icon" title="Re-Scan">🔄</span>
+                        <span class="action-icon" title="Generate Report">📄</span>
+                        <span class="action-icon" title="Add Notes / Tags">📝</span>
+                        <span class="action-icon" title="Flag as Critical">❗</span>
+                    </td>
+                </tr>`;
+                tbody.append(row);
+            });
+        }
+        if (dataTable) {
+            dataTable.destroy();
+        }
+        dataTable = $('#assets-table').DataTable();
+    }
+    function fetchAssets() {
+        $.getJSON('/api/attack_surface_assets', function(data) {
+            renderAssets(data);
+        });
+    }
+    fetchAssets();
+    setInterval(fetchAssets, 5000);
+    dataTable = $('#assets-table').DataTable();
 });
 </script>

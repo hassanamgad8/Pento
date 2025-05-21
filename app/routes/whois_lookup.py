@@ -1,9 +1,11 @@
 from flask import Blueprint, render_template, request, jsonify, send_file
-from flask_login import login_required
+from flask_login import login_required, current_user
 import paramiko
 from fpdf import FPDF
 import tempfile
 import os
+from datetime import datetime
+
 
 whois_lookup_bp = Blueprint('whois_lookup', __name__)
 
@@ -48,12 +50,38 @@ def whois_lookup():
 @whois_lookup_bp.route('/api/whois-lookup', methods=['POST'])
 @login_required
 def api_whois_lookup():
+    from app import db
+    from app.models import Asset, Scan, RecentActivity
     data = request.get_json()
     domain = data.get('domain')
     options = data.get('options', [])
     if not domain:
         return jsonify({"error": "Domain is required"}), 400
+    # Create Scan entry (status: running)
+    scan = Scan(type='WHOIS Lookup', status='running', started_at=datetime.utcnow(), user_id=current_user.id)
+    db.session.add(scan)
+    db.session.commit()
     result = run_whois(domain, options)
+    # Update Scan entry to finished
+    scan.status = 'finished'
+    scan.finished_at = datetime.utcnow()
+    db.session.commit()
+    # Log RecentActivity
+    activity = RecentActivity(description=f"WHOIS lookup for {domain} completed", user_id=current_user.id, scan_id=scan.id)
+    db.session.add(activity)
+    db.session.commit()
+    # --- Parse WHOIS output and insert Asset ---
+    asset = Asset(
+        hostname=domain,
+        asset_type='Domain Registration',
+        source='WHOIS Lookup',
+        last_seen=datetime.utcnow(),
+        tags=",".join(options),
+        risk='Low'
+    )
+    db.session.add(asset)
+    db.session.commit()
+    # --- End parse/insert ---
     if result.startswith("Error:"):
         return jsonify({"error": result}), 500
     return jsonify({"whois": result})

@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify, send_file
-from flask_login import login_required
+from flask_login import login_required, current_user
 import paramiko
 import json
 from fpdf import FPDF
@@ -70,23 +70,26 @@ def port_scanner():
 
 @port_scanner_bp.route('/api/port-scan', methods=['POST'])
 @login_required
-def start_port_scan():
+def api_port_scan():
     from app import db
-    from app.models import Asset
+    from app.models import Asset, Scan, RecentActivity
     data = request.get_json()
     target = data.get('target')
     scan_type = data.get('scan_type', 'quick')
     verbose = data.get('verbose', False)
     timing = data.get('timing', False)
-    
     if not target:
         return jsonify({"error": "Target is required"}), 400
-        
+    # Create Scan entry (status: running)
+    scan = Scan(type='Port Scanner', status='running', started_at=datetime.utcnow(), user_id=current_user.id)
+    db.session.add(scan)
+    db.session.commit()
     result = run_nmap_scan(target, scan_type, verbose, timing)
-    
     if "error" in result:
+        scan.status = 'finished'
+        scan.finished_at = datetime.utcnow()
+        db.session.commit()
         return jsonify(result), 500
-
     # --- Parse Nmap output and insert Asset ---
     output = result.get("output", "")
     hostname = target
@@ -117,9 +120,15 @@ def start_port_scan():
         last_seen=datetime.utcnow()
     )
     db.session.add(asset)
+    # Update Scan entry to finished
+    scan.status = 'finished'
+    scan.finished_at = datetime.utcnow()
+    db.session.commit()
+    # Log RecentActivity
+    activity = RecentActivity(description=f"Port scan on {target} completed", user_id=current_user.id, scan_id=scan.id)
+    db.session.add(activity)
     db.session.commit()
     # --- End parse/insert ---
-        
     return jsonify(result)
 
 @port_scanner_bp.route('/api/port-scan/pdf', methods=['POST'])

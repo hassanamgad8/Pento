@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 import subprocess
 import datetime
 import shutil
@@ -23,7 +23,7 @@ def check_wafw00f_installed():
 @login_required
 def waf_scan():
     from app import db
-    from app.models import Asset
+    from app.models import Asset, Scan, RecentActivity
     if not check_wafw00f_installed():
         return jsonify({"error": "wafw00f not found. Install it using: pip install wafw00f"}), 400
 
@@ -35,6 +35,11 @@ def waf_scan():
 
     if not target:
         return jsonify({"error": "Target URL is required"}), 400
+
+    # Create Scan entry (status: running)
+    scan = Scan(type='WAF Detector', status='running', started_at=datetime.utcnow(), user_id=current_user.id)
+    db.session.add(scan)
+    db.session.commit()
 
     cmd = ["wafw00f"]
     if findall:
@@ -71,11 +76,18 @@ def waf_scan():
             hostname=target,
             asset_type='WAF',
             source='WAF Detector',
-            last_seen=datetime.now(),
+            last_seen=datetime.utcnow(),
             tags=waf_name,
             risk='Med'
         )
         db.session.add(asset)
+        # Update Scan entry to finished
+        scan.status = 'finished'
+        scan.finished_at = datetime.utcnow()
+        db.session.commit()
+        # Log RecentActivity
+        activity = RecentActivity(description=f"WAF scan on {target} completed", user_id=current_user.id, scan_id=scan.id)
+        db.session.add(activity)
         db.session.commit()
         # --- End parse/insert ---
 
@@ -85,6 +97,12 @@ def waf_scan():
         })
 
     except subprocess.CalledProcessError as e:
+        scan.status = 'finished'
+        scan.finished_at = datetime.utcnow()
+        db.session.commit()
         return jsonify({"error": f"wafw00f error: {e.stderr}"}), 500
     except Exception as e:
+        scan.status = 'finished'
+        scan.finished_at = datetime.utcnow()
+        db.session.commit()
         return jsonify({"error": str(e)}), 500 

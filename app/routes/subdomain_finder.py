@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify, send_file
-from flask_login import login_required
+from flask_login import login_required, current_user
 import paramiko
 from fpdf import FPDF
 import tempfile
@@ -20,14 +20,11 @@ def run_amass(domain):
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(KALI_HOST, KALI_PORT, KALI_USERNAME, KALI_PASSWORD)
-
         # Run amass
-        stdin, stdout, stderr = ssh.exec_command(f"amass enum -d {domain}")
+        stdin, stdout, stderr = ssh.exec_command(f"amass enum -passive -d {domain}")
         amass_output = stdout.read().decode(errors='ignore')
         amass_error = stderr.read().decode(errors='ignore')
-
         ssh.close()
-
         return amass_output if amass_output else amass_error
     except Exception as e:
         return f"Error: {str(e)}"
@@ -41,15 +38,21 @@ def subdomain_finder():
 @login_required
 def api_subdomain_finder():
     from app import db
-    from app.models import Asset
+    from app.models import Asset, Scan, RecentActivity
     data = request.get_json()
     domain = data.get('domain')
     if not domain:
         return jsonify({"error": "Domain is required"}), 400
+    # Create Scan entry (status: running)
+    scan = Scan(type='Subdomain Finder', status='running', started_at=datetime.utcnow(), user_id=current_user.id)
+    db.session.add(scan)
+    db.session.commit()
     result = run_amass(domain)
     if result.startswith("Error:"):
+        scan.status = 'finished'
+        scan.finished_at = datetime.utcnow()
+        db.session.commit()
         return jsonify({"error": result}), 500
-
     # --- Parse amass output and insert Assets ---
     discovered_subdomains = set()
     domain_regex = re.compile(r'([a-zA-Z0-9_.-]+\.[a-zA-Z]{2,})')
@@ -57,22 +60,23 @@ def api_subdomain_finder():
         matches = domain_regex.findall(line)
         for match in matches:
             discovered_subdomains.add(match.lower())
-    print('Discovered subdomains:', discovered_subdomains)
     existing = {a.hostname for a in Asset.query.filter(Asset.hostname.in_(discovered_subdomains)).all()}
     for d in discovered_subdomains:
         if d not in existing:
             try:
                 asset = Asset(hostname=d, asset_type='Subdomain', source='Subdomain Finder', last_seen=datetime.utcnow())
                 db.session.add(asset)
-                print(f'Added asset: {d}')
             except Exception as e:
-                print(f'Error adding asset {d}:', e)
-    try:
-        db.session.commit()
-    except Exception as e:
-        print('DB commit error:', e)
+                pass
+    # Update Scan entry to finished
+    scan.status = 'finished'
+    scan.finished_at = datetime.utcnow()
+    db.session.commit()
+    # Log RecentActivity
+    activity = RecentActivity(description=f"Subdomain scan on {domain} completed", user_id=current_user.id, scan_id=scan.id)
+    db.session.add(activity)
+    db.session.commit()
     # --- End parse/insert ---
-
     return jsonify({"amass": result})
 
 @subdomain_finder_bp.route('/api/subdomain-finder/pdf', methods=['POST'])

@@ -16,7 +16,7 @@
             <li><button id="findings-btn" class="tool-link">Findings</button></li>
             <li><button id="assets-btn" class="tool-link">Assets</button></li>
             <li><button id="reports-btn" class="tool-link">Reports</button></li>
-            <li><button id="chatbot-btn" class="tool-link">Chatbot</button></li>
+            <li><button id="chatbot-btn" class="tool-link">CLI</button></li>
         </ul>
     </nav>
 
@@ -34,32 +34,11 @@
         <div class="dashboard-grid">
             <div class="grid-item tool-stats">
                 <h2>Active Scans</h2>
-                <canvas id="active-scans-chart"></canvas>
+                <div id="active-scans-legend" style="text-align:center;margin:2.5em 0 0 0;font-size:1.2em;"></div>
             </div>
             <div class="grid-item recent-activity">
                 <h2>Recent Activity</h2>
-                {% if reports %}
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Scan Type</th>
-                            <th>Target</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for report in reports %}
-                        <tr>
-                            <td>{{ report.scan_type }}</td>
-                            <td>{{ report.target }}</td>
-                            <td>{{ report.created_at.strftime("%Y-%m-%d %H:%M:%S") }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                {% else %}
-                <p>No recent activity available.</p>
-                {% endif %}
+                <ul id="recent-activity-timeline" style="list-style:none;padding:0;margin:0;"></ul>
             </div>
         </div>
 
@@ -67,22 +46,23 @@
             <h2>Attack Surface Summary</h2>
             <div class="summary-grid">
                 <div class="summary-card"><h3 id="ip-address-count">0</h3><p>IP ADDRESS</p></div>
-                <div class="summary-card"><h3 id="hostnames-count">0</h3><p>HOSTNAMES</p></div>
+                <div class="summary-card"><h3 id="hostnames-count">0</h3><p>DOMAINS</p></div>
                 <div class="summary-card"><h3 id="port-count">0</h3><p>PORTS</p></div>
-                <div class="summary-card"><h3 id="protocol-count">0</h3><p>PROTOCOLS</p></div>
-                <div class="summary-card"><h3 id="services-count">0</h3><p>SERVICES</p></div>
+                <div class="summary-card"><h3 id="protocol-count">0</h3><p>SUBDOMAINS</p></div>
+                <div class="summary-card"><h3 id="services-count">0</h3><p>ENDPOINTS</p></div>
                 <div class="summary-card"><h3 id="technologies-count">0</h3><p>TECHNOLOGIES</p></div>
             </div>
         </div>
 
-        <div class="ai-form-scanner summary-card">
-            <h2>🔍 AI Website Scanner</h2>
-            <form id="ai-form-scanner-form">
-                <input type="text" id="ai-url-input" placeholder="http://example.com/" style="width: 60%;">
-                <button type="submit">Scan with AI</button>
-            </form>
-            <pre id="ai-scan-output" style="background:#000; color:#0f0; padding:1rem; margin-top:1rem;"></pre>
+        <div class="dashboard-extras" style="margin-top:2rem;display:flex;gap:2rem;">
+            <div class="risk-score-card summary-card" style="flex:1;text-align:center;">
+                <h2>Risk Score</h2>
+                <div id="risk-score-value" style="font-size:2.5rem;color:#f00;">--</div>
+                <div id="risk-score-desc" style="font-size:1.1rem;color:#aaa;">Calculating...</div>
+            </div>
         </div>
+
+       
         
         <script src="{{ url_for('static', filename='js/ai_scanner.js') }}"></script>
        

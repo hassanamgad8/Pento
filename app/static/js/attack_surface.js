@@ -105,8 +105,16 @@ $(document).ready(function() {
                 updateGlobe([], tab);
             });
     }
+    // Polling for real-time updates
+    let currentTab = 'domains';
+    function pollCurrentTab() {
+        switchTab(currentTab);
+    }
+    setInterval(pollCurrentTab, 5000);
+    // Update currentTab on tab switch
     $('.tab-btn').off('click').on('click', function() {
         const tab = $(this).data('tab');
+        currentTab = tab;
         switchTab(tab);
     });
     // Make summary cards clickable

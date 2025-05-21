@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify, render_template
-from flask_login import login_required
+from flask_login import login_required, current_user
 from zapv2 import ZAPv2
 import time
 import os
@@ -39,12 +39,19 @@ def wait_zap(label, check_fn, id=None):
 @login_required
 def zap_scan():
     """Start a ZAP scan with the provided options"""
+    from app import db
+    from app.models import Scan, RecentActivity
     try:
         data = request.get_json()
         url = data["url"]
         spider = data.get("spider", True)
         ajax = data.get("ajax", False)
         active = data.get("active", True)
+        
+        # Create Scan entry (status: running)
+        scan = Scan(type='Website Scanner', status='running', started_at=datetime.utcnow(), user_id=current_user.id)
+        db.session.add(scan)
+        db.session.commit()
         
         # Access the target URL to initialize the site in ZAP
         zap.urlopen(url)
@@ -65,7 +72,8 @@ def zap_scan():
                 "active": active
             },
             "status": "initialized",
-            "progress": 0
+            "progress": 0,
+            "scan_db_id": scan.id
         }
         
         os.makedirs("app/static/scans", exist_ok=True)
@@ -80,11 +88,12 @@ def zap_scan():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
 @zap_bp.route("/zap_scan_status", methods=["GET"])
 @login_required
 def zap_scan_status():
     """Check the status of a ZAP scan"""
+    from app import db
+    from app.models import Scan, RecentActivity, Asset, AttackSurface
     scan_id = request.args.get("scan_id")
     
     try:
@@ -169,9 +178,6 @@ def zap_scan_status():
                         with open(json_path, "w") as f:
                             json.dump(alerts, f)
                         
-                        # --- Insert Asset and AttackSurface entries ---
-                        from app import db
-                        from app.models import Asset, AttackSurface
                         # Add the scanned site as an Asset
                         asset = Asset(
                             hostname=url,
@@ -188,14 +194,21 @@ def zap_scan_status():
                                 endpoints.add(alert['url'])
                         for ep in endpoints:
                             surface = AttackSurface(
-                                scan_id=None,
+                                scan_id=scan_info.get('scan_db_id'),
                                 endpoint=ep,
                                 param='',
                                 source='Website Scanner'
                             )
                             db.session.add(surface)
+                        # Update Scan entry to finished
+                        scan = Scan.query.get(scan_info.get('scan_db_id'))
+                        if scan:
+                            scan.status = 'finished'
+                            scan.finished_at = datetime.utcnow()
+                        # Log RecentActivity
+                        activity = RecentActivity(description=f"Website scan on {url} completed", user_id=scan.user_id if scan else None, scan_id=scan.id if scan else None)
+                        db.session.add(activity)
                         db.session.commit()
-                        # --- End insert ---
                         
                         # Update scan info with report paths
                         scan_info["reports"] = {
@@ -228,9 +241,6 @@ def zap_scan_status():
                 with open(json_path, "w") as f:
                     json.dump(alerts, f)
                 
-                # --- Insert Asset and AttackSurface entries ---
-                from app import db
-                from app.models import Asset, AttackSurface
                 # Add the scanned site as an Asset
                 asset = Asset(
                     hostname=url,
@@ -247,14 +257,21 @@ def zap_scan_status():
                         endpoints.add(alert['url'])
                 for ep in endpoints:
                     surface = AttackSurface(
-                        scan_id=None,
+                        scan_id=scan_info.get('scan_db_id'),
                         endpoint=ep,
                         param='',
                         source='Website Scanner'
                     )
                     db.session.add(surface)
+                # Update Scan entry to finished
+                scan = Scan.query.get(scan_info.get('scan_db_id'))
+                if scan:
+                    scan.status = 'finished'
+                    scan.finished_at = datetime.utcnow()
+                # Log RecentActivity
+                activity = RecentActivity(description=f"Website scan on {url} completed", user_id=scan.user_id if scan else None, scan_id=scan.id if scan else None)
+                db.session.add(activity)
                 db.session.commit()
-                # --- End insert ---
                 
                 # Update scan info with report paths
                 scan_info["reports"] = {
@@ -297,7 +314,6 @@ def zap_scan_status():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
 @zap_bp.route("/zap_scan_results", methods=["GET"])
 @login_required
 def zap_scan_results():
@@ -316,7 +332,6 @@ def zap_scan_results():
         
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
 
 @zap_bp.route("/zap_scan_cancel", methods=["POST"])
 @login_required
@@ -351,7 +366,6 @@ def zap_scan_cancel():
         
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
 
 @zap_bp.route("/scan_partials/<partial>")
 @login_required
