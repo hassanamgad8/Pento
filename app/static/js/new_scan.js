@@ -14,5 +14,5 @@ function switchTab(tabName, clickedBtn) {
 
 // Set default tab after DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelector('.tool-tab-btn[onclick*="recon"]')?.click();
+    document.querySelector('.tool-tab-btn[onclick*="exploit"]')?.click();
 });

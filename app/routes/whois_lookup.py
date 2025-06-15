@@ -10,7 +10,7 @@ from datetime import datetime
 whois_lookup_bp = Blueprint('whois_lookup', __name__)
 
 # SSH Configuration
-KALI_HOST = "192.168.1.54"
+KALI_HOST = "192.168.1.72"
 KALI_PORT = 22
 KALI_USERNAME = "kali"
 KALI_PASSWORD = "kali"

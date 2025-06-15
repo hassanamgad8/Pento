@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "subdomain-finder-btn": "/subdomain-finder",  // ✅ Added subdomain finder
         "sqli-exploiter-btn": "/sqli-exploiter",  // ✅ Added sqli exploiter
         "whois-lookup-btn": "/whois-lookup",  // ✅ Added whois lookup
-        "dns-lookup-btn": "/dns-lookup"  // ✅ Added dns lookup
+        "dns-lookup-btn": "/dns-lookup",  // ✅ Added dns lookup
+        "sniper-btn": "/sniper"  // ✅ Added sniper button
     };
 
     Object.entries(routes).forEach(([btnId, route]) => {
@@ -296,6 +297,7 @@ document.addEventListener("click", function(e) {
     const sqliExploiterCard = e.target.closest("#sqli-exploiter-btn");
     const whoisLookupCard = e.target.closest("#whois-lookup-btn");
     const dnsLookupCard = e.target.closest("#dns-lookup-btn");
+    const sniperCard = e.target.closest("#sniper-btn");
     
     if (websiteScannerCard) {
         console.log("Website Scanner card clicked");
@@ -397,6 +399,25 @@ document.addEventListener("click", function(e) {
                     mod.initDnsLookup();
                     console.log("dns_lookup.js initialized after DOM update");
                 });
+            });
+    }
+
+    if (sniperCard) {
+        console.log("Sniper card clicked");
+        e.preventDefault();
+        fetch("/sniper", { headers: { "X-Requested-With": "XMLHttpRequest" } })
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("main-content").innerHTML = html;
+                // Debug: check if sniper-form exists
+                const sniperFormCheck = document.getElementById('sniper-form');
+                console.log('[script.js] sniper-form present after HTML injection:', !!sniperFormCheck);
+                setTimeout(() => {
+                    import("/static/js/sniper.js").then(mod => {
+                        if (mod.initSniper) mod.initSniper();
+                        console.log("sniper.js initialized after DOM update");
+                    });
+                }, 0);
             });
     }
 });

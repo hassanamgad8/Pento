@@ -1,0 +1,178 @@
+{
+  "target": "192.168.1.10",
+  "scan_time": "2025-06-15 09:07:51",
+  "vulnerabilities": [],
+  "nmap_output": "Starting Nmap 7.95 ( https://nmap.org ) at 2025-06-15 01:56 EDT\nNmap scan report for 192.168.1.10 (192.168.1.10)\nHost is up (0.00044s latency).\nNot shown: 977 closed tcp ports (reset)\nPORT     STATE SERVICE     VERSION\n21/tcp   open  ftp         vsftpd 2.3.4\n|_ftp-anon: Anonymous FTP login allowed (FTP code 230)\n| ftp-syst: \n|   STAT: \n| FTP server status:\n|      Connected to 192.168.1.72\n|      Logged in as ftp\n|      TYPE: ASCII\n|      No session bandwidth limit\n|      Session timeout in seconds is 300\n|      Control connection is plain text\n|      Data connections will be plain text\n|      vsFTPd 2.3.4 - secure, fast, stable\n|_End of status\n22/tcp   open  ssh         OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)\n| ssh-hostkey: \n|   1024 60:0f:cf:e1:c0:5f:6a:74:d6:90:24:fa:c4:d5:6c:cd (DSA)\n|_  2048 56:56:24:0f:21:1d:de:a7:2b:ae:61:b1:24:3d:e8:f3 (RSA)\n23/tcp   open  telnet      Linux telnetd\n25/tcp   open  smtp        Postfix smtpd\n| ssl-cert: Subject: commonName=ubuntu804-base.localdomain/organizationName=OCOSA/stateOrProvinceName=There is no such thing outside US/countryName=XX\n| Not valid before: 2010-03-17T14:07:45\n|_Not valid after:  2010-04-16T14:07:45\n|_smtp-commands: metasploitable.localdomain, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN\n| sslv2: \n|   SSLv2 supported\n|   ciphers: \n|     SSL2_DES_192_EDE3_CBC_WITH_MD5\n|     SSL2_RC2_128_CBC_EXPORT40_WITH_MD5\n|     SSL2_RC4_128_EXPORT40_WITH_MD5\n|     SSL2_RC4_128_WITH_MD5\n|     SSL2_DES_64_CBC_WITH_MD5\n|_    SSL2_RC2_128_CBC_WITH_MD5\n|_ssl-date: 2025-06-15T05:58:07+00:00; -1s from scanner time.\n53/tcp   open  domain      ISC BIND 9.4.2\n| dns-nsid: \n|_  bind.version: 9.4.2\n80/tcp   open  http        Apache httpd 2.2.8 ((Ubuntu) DAV/2)\n|_http-title: Metasploitable2 - Linux\n|_http-server-header: Apache/2.2.8 (Ubuntu) DAV/2\n111/tcp  open  rpcbind     2 (RPC #100000)\n| rpcinfo: \n|   program version    port/proto  service\n|   100000  2            111/tcp   rpcbind\n|   100000  2            111/udp   rpcbind\n|   100003  2,3,4       2049/tcp   nfs\n|   100003  2,3,4       2049/udp   nfs\n|   100005  1,2,3      42766/tcp   mountd\n|   100005  1,2,3      53512/udp   mountd\n|   100021  1,3,4      43845/udp   nlockmgr\n|   100021  1,3,4      51404/tcp   nlockmgr\n|   100024  1          33977/tcp   status\n|_  100024  1          43043/udp   status\n139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)\n445/tcp  open  netbios-ssn Samba smbd 3.0.20-Debian (workgroup: WORKGROUP)\n512/tcp  open  exec?\n513/tcp  open  login       OpenBSD or Solaris rlogind\n514/tcp  open  shell?\n| fingerprint-strings: \n|   NULL: \n|_    Couldn't get address for your host (kali)\n1099/tcp open  java-rmi    GNU Classpath grmiregistry\n1524/tcp open  bindshell   Metasploitable root shell\n2049/tcp open  nfs         2-4 (RPC #100003)\n2121/tcp open  ftp         ProFTPD 1.3.1\n3306/tcp open  mysql       MySQL 5.0.51a-3ubuntu5\n| mysql-info: \n|   Protocol: 10\n|   Version: 5.0.51a-3ubuntu5\n|   Thread ID: 26\n|   Capabilities flags: 43564\n|   Some Capabilities: LongColumnFlag, SwitchToSSLAfterHandshake, Speaks41ProtocolNew, ConnectWithDatabase, SupportsTransactions, Support41Auth, SupportsCompression\n|   Status: Autocommit\n|_  Salt: AZ%EjfAS^_?_BheBZ!0n\n5432/tcp open  postgresql  PostgreSQL DB 8.3.0 - 8.3.7\n|_ssl-date: 2025-06-15T05:58:07+00:00; -1s from scanner time.\n| ssl-cert: Subject: commonName=ubuntu804-base.localdomain/organizationName=OCOSA/stateOrProvinceName=There is no such thing outside US/countryName=XX\n| Not valid before: 2010-03-17T14:07:45\n|_Not valid after:  2010-04-16T14:07:45\n5900/tcp open  vnc         VNC (protocol 3.3)\n| vnc-info: \n|   Protocol version: 3.3\n|   Security types: \n|_    VNC Authentication (2)\n6000/tcp open  X11         (access denied)\n6667/tcp open  irc         UnrealIRCd\n| irc-info: \n|   users: 1\n|   servers: 1\n|   lusers: 1\n|   lservers: 0\n|   server: irc.Metasploitable.LAN\n|   version: Unreal3.2.8.1. irc.Metasploitable.LAN \n|   uptime: 0 days, 1:28:27\n|   source ident: nmap\n|   source host: Test-B025CB0A\n|_  error: Closing Link: cjpyqbvsu[kali] (Quit: cjpyqbvsu)\n8009/tcp open  ajp13       Apache Jserv (Protocol v1.3)\n|_ajp-methods: Failed to get a valid response for the OPTION request\n8180/tcp open  http        Apache Tomcat/Coyote JSP engine 1.1\n|_http-favicon: Apache Tomcat\n|_http-title: Apache Tomcat/5.5\n|_http-server-header: Apache-Coyote/1.1\n1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :\nSF-Port514-TCP:V=7.95%I=7%D=6/15%Time=684E60A7%P=x86_64-pc-linux-gnu%r(NUL\nSF:L,2B,\"\\x01Couldn't\\x20get\\x20address\\x20for\\x20your\\x20host\\x20\\(kali\\)\nSF:\\n\");\nMAC Address: 08:00:27:DF:55:48 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)\nService Info: Hosts:  metasploitable.localdomain, irc.Metasploitable.LAN; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel\n\nHost script results:\n|_clock-skew: mean: 59m59s, deviation: 2h00m00s, median: -1s\n|_nbstat: NetBIOS name: METASPLOITABLE, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)\n| smb-security-mode: \n|   account_used: <blank>\n|   authentication_level: user\n|   challenge_response: supported\n|_  message_signing: disabled (dangerous, but default)\n|_smb2-time: Protocol negotiation failed (SMB2)\n| smb-os-discovery: \n|   OS: Unix (Samba 3.0.20-Debian)\n|   Computer name: metasploitable\n|   NetBIOS computer name: \n|   Domain name: localdomain\n|   FQDN: metasploitable.localdomain\n|_  System time: 2025-06-15T01:57:59-04:00\n\nService detection performed. Please report any incorrect results at https://nmap.org/submit/ .\nNmap done: 1 IP address (1 host up) scanned in 80.17 seconds\n\nStarting Nmap 7.95 ( https://nmap.org ) at 2025-06-15 01:58 EDT\nNmap scan report for 192.168.1.10 (192.168.1.10)\nHost is up (0.00069s latency).\n\nPORT     STATE SERVICE    VERSION\n5432/tcp open  postgresql PostgreSQL DB 8.3.0 - 8.3.7\n|_ssl-date: 2025-06-15T05:58:27+00:00; 0s from scanner time.\n| ssl-cert: Subject: commonName=ubuntu804-base.localdomain/organizationName=OCOSA/stateOrProvinceName=There is no such thing outside US/countryName=XX\n| Not valid before: 2010-03-17T14:07:45\n|_Not valid after:  2010-04-16T14:07:45\n5900/tcp open  vnc        VNC (protocol 3.3)\n| vnc-info: \n|   Protocol version: 3.3\n|   Security types: \n|_    VNC Authentication (2)\n6000/tcp open  X11        (access denied)\n6667/tcp open  irc        UnrealIRCd\n| irc-info: \n|   users: 1\n|   servers: 1\n|   lusers: 1\n|   lservers: 0\n|   server: irc.Metasploitable.LAN\n|   version: Unreal3.2.8.1. irc.Metasploitable.LAN \n|   uptime: 0 days, 1:28:55\n|   source ident: nmap\n|   source host: Test-B025CB0A\n|_  error: Closing Link: cmcrxyhxk[kali] (Quit: cmcrxyhxk)\n8009/tcp open  ajp13      Apache Jserv (Protocol v1.3)\n|_ajp-methods: Failed to get a valid response for the OPTION request\n8180/tcp open  http       Apache Tomcat/Coyote JSP engine 1.1\n|_http-server-header: Apache-Coyote/1.1\n|_http-title: Apache Tomcat/5.5\n|_http-favicon: Apache Tomcat\nMAC Address: 08:00:27:DF:55:48 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)\nService Info: Host: irc.Metasploitable.LAN\n\nService detection performed. Please report any incorrect results at https://nmap.org/submit/ .\nNmap done: 1 IP address (1 host up) scanned in 19.14 seconds\n",
+  "whatweb_results": [
+    {
+      "port": 80,
+      "service": "http",
+      "output": "WhatWeb report for http://192.168.1.10:80\nStatus    : 200 OK\nTitle     : Metasploitable2 - Linux\nIP        : 192.168.1.10\nCountry   : RESERVED, ZZ\n\nSummary   : Apache[2.2.8], HTTPServer[Ubuntu Linux][Apache/2.2.8 (Ubuntu) DAV/2], PHP[5.2.4-2ubuntu5.10], WebDAV[2], X-Powered-By[PHP/5.2.4-2ubuntu5.10]\n\nDetected Plugins:\n[ Apache ]\n\tThe Apache HTTP Server Project is an effort to develop and \n\tmaintain an open-source HTTP server for modern operating \n\tsystems including UNIX and Windows NT. The goal of this \n\tproject is to provide a secure, efficient and extensible \n\tserver that provides HTTP services in sync with the current \n\tHTTP standards. \n\n\tVersion      : 2.2.8 (from HTTP Server Header)\n\tGoogle Dorks: (3)\n\tWebsite     : http://httpd.apache.org/\n\n[ HTTPServer ]\n\tHTTP server header string. This plugin also attempts to \n\tidentify the operating system from the server header. \n\n\tOS           : Ubuntu Linux\n\tString       : Apache/2.2.8 (Ubuntu) DAV/2 (from server string)\n\n[ PHP ]\n\tPHP is a widely-used general-purpose scripting language \n\tthat is especially suited for Web development and can be \n\tembedded into HTML. This plugin identifies PHP errors, \n\tmodules and versions and extracts the local file path and \n\tusername if present. \n\n\tVersion      : 5.2.4-2ubuntu5.10\n\tGoogle Dorks: (2)\n\tWebsite     : http://www.php.net/\n\n[ WebDAV ]\n\tWeb-based Distributed Authoring and Versioning (WebDAV) is \n\ta set of methods based on the Hypertext Transfer Protocol \n\t(HTTP) that facilitates collaboration between users in \n\tediting and managing documents and files stored on World \n\tWide Web servers. - More Info: \n\thttp://en.wikipedia.org/wiki/WebDAV \n\n\tVersion      : 2\n\n[ X-Powered-By ]\n\tX-Powered-By HTTP header \n\n\tString       : PHP/5.2.4-2ubuntu5.10 (from x-powered-by string)\n\nHTTP Headers:\n\tHTTP/1.1 200 OK\n\tDate: Sun, 15 Jun 2025 05:58:31 GMT\n\tServer: Apache/2.2.8 (Ubuntu) DAV/2\n\tX-Powered-By: PHP/5.2.4-2ubuntu5.10\n\tContent-Length: 891\n\tConnection: close\n\tContent-Type: text/html\n\t\nhttp://192.168.1.10:80 [200 OK] Apache[2.2.8], Country[RESERVED][ZZ], HTTPServer[Ubuntu Linux][Apache/2.2.8 (Ubuntu) DAV/2], IP[192.168.1.10], PHP[5.2.4-2ubuntu5.10], Title[Metasploitable2 - Linux], WebDAV[2], X-Powered-By[PHP/5.2.4-2ubuntu5.10]\n"
+    },
+    {
+      "port": 8180,
+      "service": "http",
+      "output": "WhatWeb report for http://192.168.1.10:8180\nStatus    : 200 OK\nTitle     : Apache Tomcat/5.5\nIP        : 192.168.1.10\nCountry   : RESERVED, ZZ\n\nSummary   : Apache, Email[dev@tomcat.apache.org,users@tomcat.apache.org], HTTPServer[Apache-Coyote/1.1], PoweredBy[Tomcat]\n\nDetected Plugins:\n[ Apache ]\n\tThe Apache HTTP Server Project is an effort to develop and \n\tmaintain an open-source HTTP server for modern operating \n\tsystems including UNIX and Windows NT. The goal of this \n\tproject is to provide a secure, efficient and extensible \n\tserver that provides HTTP services in sync with the current \n\tHTTP standards. \n\n\tGoogle Dorks: (3)\n\tWebsite     : http://httpd.apache.org/\n\n[ Email ]\n\tExtract email addresses. Find valid email address and \n\tsyntactically invalid email addresses from mailto: link \n\ttags. We match syntactically invalid links containing \n\tmailto: to catch anti-spam email addresses, eg. bob at \n\tgmail.com. This uses the simplified email regular \n\texpression from \n\thttp://www.regular-expressions.info/email.html for valid \n\temail address matching. \n\n\tString       : dev@tomcat.apache.org,users@tomcat.apache.org\n\tString       : dev@tomcat.apache.org,users@tomcat.apache.org\n\n[ HTTPServer ]\n\tHTTP server header string. This plugin also attempts to \n\tidentify the operating system from the server header. \n\n\tString       : Apache-Coyote/1.1 (from server string)\n\n[ PoweredBy ]\n\tThis plugin identifies instances of 'Powered by x' text and \n\tattempts to extract the value for x. \n\n\tString       : Tomcat\n\nHTTP Headers:\n\tHTTP/1.1 200 OK\n\tServer: Apache-Coyote/1.1\n\tContent-Type: text/html;charset=ISO-8859-1\n\tDate: Sun, 15 Jun 2025 05:58:39 GMT\n\tConnection: close\n\t\nhttp://192.168.1.10:8180 [200 OK] Apache, Country[RESERVED][ZZ], Email[dev@tomcat.apache.org,users@tomcat.apache.org], HTTPServer[Apache-Coyote/1.1], IP[192.168.1.10], PoweredBy[Tomcat], Title[Apache Tomcat/5.5]\n"
+    }
+  ],
+  "nuclei_output": "{\"type\": \"message\", \"message\": \"LLM suggested Nuclei tags/folders: ['cves', 'vulnerabilities', 'exposures', 'misconfiguration', 'default-logins']. Reason: Using default Nuclei tags due to LLM failures\", \"messageType\": \"system\"}\n\n{\"type\": \"message\", \"message\": \"Running targeted Nuclei scan with tags: ['cves', 'vulnerabilities', 'exposures', 'misconfiguration', 'default-logins']...\", \"messageType\": \"system\"}\n",
+  "spring4shell_result": {},
+  "exploitation_results": [],
+  "exploit_results": [],
+  "system_info": {
+    "system_details": "Linux kali 6.6.15-amd64 #1 SMP PREEMPT_DYNAMIC Kali 6.6.15-2kali1 (2024-05-17) x86_64 GNU/Linux\nkali\nuid=1000(kali) gid=1000(kali) groups=1000(kali),4(adm),20(dialout),24(cdrom),25(floppy),27(sudo),29(audio),30(dip),44(video),46(plugdev),100(users),101(netdev),106(bluetooth),113(scanner),136(wireshark),137(kaboxer),138(vboxsf)\n"
+  },
+  "network_topology": {
+    "target": "192.168.1.10",
+    "open_ports": [
+      "21",
+      "22",
+      "23",
+      "25",
+      "53",
+      "80",
+      "111",
+      "139",
+      "445",
+      "512",
+      "513",
+      "514",
+      "1099",
+      "1524",
+      "2049",
+      "2121",
+      "3306",
+      "5432",
+      "5900",
+      "6000",
+      "6667",
+      "8009",
+      "8180",
+      "5432",
+      "5900",
+      "6000",
+      "6667",
+      "8009",
+      "8180"
+    ],
+    "services": [
+      [
+        "21",
+        "ftp"
+      ],
+      [
+        "22",
+        "ssh"
+      ],
+      [
+        "23",
+        "telnet"
+      ],
+      [
+        "25",
+        "smtp"
+      ],
+      [
+        "53",
+        "domain"
+      ],
+      [
+        "80",
+        "http"
+      ],
+      [
+        "111",
+        "rpcbind"
+      ],
+      [
+        "139",
+        "netbios"
+      ],
+      [
+        "445",
+        "netbios"
+      ],
+      [
+        "512",
+        "exec"
+      ],
+      [
+        "513",
+        "login"
+      ],
+      [
+        "514",
+        "shell"
+      ],
+      [
+        "1099",
+        "java"
+      ],
+      [
+        "1524",
+        "bindshell"
+      ],
+      [
+        "2049",
+        "nfs"
+      ],
+      [
+        "2121",
+        "ftp"
+      ],
+      [
+        "3306",
+        "mysql"
+      ],
+      [
+        "5432",
+        "postgresql"
+      ],
+      [
+        "5900",
+        "vnc"
+      ],
+      [
+        "6000",
+        "X11"
+      ],
+      [
+        "6667",
+        "irc"
+      ],
+      [
+        "8009",
+        "ajp13"
+      ],
+      [
+        "8180",
+        "http"
+      ],
+      [
+        "5432",
+        "postgresql"
+      ],
+      [
+        "5900",
+        "vnc"
+      ],
+      [
+        "6000",
+        "X11"
+      ],
+      [
+        "6667",
+        "irc"
+      ],
+      [
+        "8009",
+        "ajp13"
+      ],
+      [
+        "8180",
+        "http"
+      ]
+    ]
+  },
+  "llm_report": ""
+}

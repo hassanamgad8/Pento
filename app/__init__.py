@@ -15,6 +15,8 @@ from app.routes.subdomain_finder import subdomain_finder_bp
 from app.routes.sqli_exploiter import sqli_exploiter_bp
 from app.routes.whois_lookup import whois_lookup_bp
 from app.routes.dns_lookup import dns_lookup_bp
+from app.routes.sniper import bp as sniper_bp
+from app.routes.google_hacking import google_hacking_bp
 
 
 
@@ -73,6 +75,8 @@ def create_app():
     app.register_blueprint(sqli_exploiter_bp)
     app.register_blueprint(whois_lookup_bp)
     app.register_blueprint(dns_lookup_bp)
+    app.register_blueprint(sniper_bp)
+    app.register_blueprint(google_hacking_bp)
     
 
 
@@ -90,6 +94,6 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(user_id):
-        return User.query.get(int(user_id))
+        return db.session.get(User, int(user_id))
 
     return app

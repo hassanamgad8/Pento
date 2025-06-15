@@ -40,6 +40,13 @@
     <h3 class="tool-title">{{ title }}</h3>
     <p class="tool-desc">{{ desc }}</p>
 </div>
+{% elif url == "/sniper" %}
+<div class="tool-card" id="sniper-btn">
+    <!-- DEBUG: SNIPER CARD RENDERED -->
+    <img src="{{ url_for('static', filename='images/' + icon) }}" alt="{{ title }} icon" class="tool-icon">
+    <h3 class="tool-title">{{ title }}</h3>
+    <p class="tool-desc">{{ desc }}</p>
+</div>
 {% else %}
 <div class="tool-card" onclick="location.href='{{ url }}'">
     <img src="{{ url_for('static', filename='images/' + icon) }}" alt="{{ title }} icon" class="tool-icon">

@@ -1,0 +1,25 @@
+{
+    "target": "http://testphp.vulnweb.com/",
+    "scan_time": "2025-05-26 04:35:56",
+    "services": [
+        {
+            "port": 80,
+            "service": "http",
+            "version": "unknown"
+        }
+    ],
+    "fuzzing": {
+        "results": [],
+        "analysis": {}
+    },
+    "nuclei_findings": [
+        {
+            "type": "nuclei",
+            "finding": "Executing: nuclei -u http://testphp.vulnweb.com:80 -severity critical,high,medium -silent",
+            "timestamp": "2025-05-26 04:35:56"
+        }
+    ],
+    "enriched_findings": [],
+    "exploit_results": [],
+    "llm_report": ""
+}

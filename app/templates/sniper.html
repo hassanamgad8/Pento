@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container" style="max-width: 700px; margin: 2rem auto;">
+  <!-- Scan Form -->
+  <div id="scan-form-panel">
+    <h1 style="color: var(--primary-color); font-size: 2rem; font-family: 'Courier New', monospace; margin-bottom: 1.5rem; text-align: center;">
+      Sniper
+    </h1>
+    <form id="sniper-form" style="display: flex; flex-direction: column; gap: 0.5em;">
+      <input type="text" id="target-input" class="form-control" placeholder="Enter target IP or URL..." style="background: var(--background-dark); color: var(--primary-color); border: 1px solid var(--primary-color); border-radius: 4px; padding: 0.5rem; font-family: monospace;">
+      <input type="text" id="tags-input" class="form-control" placeholder="Nuclei tags/categories (e.g. cves,vulnerabilities) [optional]" style="background: var(--background-dark); color: var(--primary-color); border: 1px solid var(--primary-color); border-radius: 4px; padding: 0.5rem; font-family: monospace;">
+      <input type="text" id="cookies-input" class="form-control" placeholder="Cookies (e.g. PHPSESSID=123; other=val) [optional]" style="background: var(--background-dark); color: var(--primary-color); border: 1px solid var(--primary-color); border-radius: 4px; padding: 0.5rem; font-family: monospace;">
+      <input type="text" id="headers-input" class="form-control" placeholder="Headers (e.g. Authorization: Bearer ...) [optional]" style="background: var(--background-dark); color: var(--primary-color); border: 1px solid var(--primary-color); border-radius: 4px; padding: 0.5rem; font-family: monospace;">
+      <button type="submit" class="green-button" id="start-scan" style="font-family: monospace;">Start Scan</button>
+    </form>
+  </div>
+  <!-- Progress/Chat Log -->
+  <div id="chat-messages" class="chat-messages" style="margin-top: 2rem; min-height: 120px; max-height: 250px; overflow-y: auto; font-family: monospace; color: #0f0; border: 1px solid var(--primary-color); border-radius: 6px; background: #111; padding: 1em;"></div>
+  <!-- Results (hidden until scan completes) -->
+  <div id="results-container" style="margin-top: 2rem; display: none;">
+    <ul class="nav nav-tabs" id="sniperResultsTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="summary-tab" data-bs-toggle="tab" data-bs-target="#summary" type="button" role="tab">Exploitation Summary</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="system-tab" data-bs-toggle="tab" data-bs-target="#system" type="button" role="tab">System</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="users-tab" data-bs-toggle="tab" data-bs-target="#users" type="button" role="tab">Users</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="processes-tab" data-bs-toggle="tab" data-bs-target="#processes" type="button" role="tab">Processes</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="filesystem-tab" data-bs-toggle="tab" data-bs-target="#filesystem" type="button" role="tab">Filesystem</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="network-tab" data-bs-toggle="tab" data-bs-target="#network" type="button" role="tab">Network</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="console-tab" data-bs-toggle="tab" data-bs-target="#console" type="button" role="tab">Console Output</button>
+      </li>
+    </ul>
+    <div class="tab-content p-3 bg-dark border border-success rounded-bottom" id="sniperResultsTabsContent" style="min-height: 200px;">
+      <div class="tab-pane fade show active" id="summary" role="tabpanel"></div>
+      <div class="tab-pane fade" id="system" role="tabpanel"></div>
+      <div class="tab-pane fade" id="users" role="tabpanel"></div>
+      <div class="tab-pane fade" id="processes" role="tabpanel"></div>
+      <div class="tab-pane fade" id="filesystem" role="tabpanel"></div>
+      <div class="tab-pane fade" id="network" role="tabpanel"></div>
+      <div class="tab-pane fade" id="console" role="tabpanel"></div>
+    </div>
+    <div class="mt-3 text-center">
+      <button class="btn btn-success" id="download-report" disabled style="font-family: monospace; background: #0f0; color: #111; border: none; padding: 0.7em 2em; border-radius: 4px; font-size: 1.1em;">
+        <i class="fas fa-download"></i> Download Report
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Loading Modal -->
+<div class="modal fade" id="loadingModal" tabindex="-1" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body text-center p-4">
+        <div class="spinner-border text-primary mb-3" role="status"></div>
+        <h5 id="loading-message">Initializing scan...</h5>
+        <div class="progress mt-3">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<style>
+.chat-messages {
+    background: #111;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    font-family: monospace;
+    color: #0f0;
+    border: 1px solid var(--primary-color);
+    min-height: 120px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+.message {
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+}
+.message.system {
+    background: #222;
+    color: #0f0;
+}
+.message.user {
+    background: #007bff;
+    color: white;
+}
+.message.error {
+    background: #dc3545;
+    color: white;
+}
+.section-content {
+    max-height: 300px;
+    overflow-y: auto;
+}
+</style>
+{% endblock %} 

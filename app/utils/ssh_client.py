@@ -1,40 +1,70 @@
 import paramiko
-import time
+import os
+from typing import Optional
 
-def run_ssh_command(host, port, username, password, command):
-    try:
-        print("🔗 Connecting to SSH...")
-        start_time = time.time()
+class SSHClient:
+    def __init__(self, host=None, port=None, username=None, password=None):
+        self.client = paramiko.SSHClient()
+        self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        # Allow passing connection details per instance
+        self.host = host or os.getenv('KALI_SSH_HOST', 'localhost')
+        self.port = int(port or os.getenv('KALI_SSH_PORT', '22'))
+        self.username = username or os.getenv('KALI_SSH_USER', 'kali')
+        self.password = password or os.getenv('KALI_SSH_PASSWORD', 'kali')
+        self._connect()
+    
+    def _connect(self):
+        """Establish SSH connection to Kali VM"""
+        try:
+            self.client.connect(
+                hostname=self.host,
+                port=self.port,
+                username=self.username,
+                password=self.password
+            )
+        except Exception as e:
+            raise Exception(f"Failed to connect to Kali VM: {str(e)}")
+    
+    def execute_command(self, command: str, timeout: Optional[int] = None) -> str:
+        """Execute a command on the Kali VM and return the output
+        
+        Args:
+            command: The command to execute
+            timeout: Optional timeout in seconds for command execution
+        """
+        try:
+            stdin, stdout, stderr = self.client.exec_command(command, timeout=timeout)
+            output = stdout.read().decode('utf-8')
+            error = stderr.read().decode('utf-8')
+            
+            if error:
+                raise Exception(f"Command execution failed: {error}")
+            
+            return output
+        except Exception as e:
+            raise Exception(f"Failed to execute command: {str(e)}")
+    
+    def close(self):
+        """Close the SSH connection"""
+        if self.client:
+            self.client.close()
+    
+    def __enter__(self):
+        return self
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.close()
 
-        ssh = paramiko.SSHClient()
-        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh.connect(hostname=host, port=port, username=username, password=password)
-        print("✅ SSH connection established.")
-
-        output = "✅ Connected to SSH successfully.\n"
-        output += f"🛠 Running command: {command}\n\n"
-
-        stdin, stdout, stderr = ssh.exec_command(command)
-
-        # Live-style capture for backend (optional for now)
-        while True:
-            line = stdout.readline()
-            if not line:
-                break
-            print("📤", line.strip())  # Log output in terminal
-            output += line
-
-        error = stderr.read().decode()
-        if error:
-            print("⚠️ STDERR:", error)
-
-        ssh.close()
-
-        duration = round(time.time() - start_time, 2)
-        output += f"\n⏱ Scan completed in {duration} seconds."
-
-        return output + (f"\n⚠️ Errors:\n{error}" if error else "")
-
-    except Exception as e:
-        print(f"❌ SSH FAILED: {e}")
-        return f"❌ SSH connection failed: {str(e)}"
+    def upload_file_content(self, content: str, remote_path: str):
+        import tempfile
+        import os
+        with tempfile.NamedTemporaryFile('w', delete=False) as tmp:
+            tmp.write(content)
+            tmp.flush()
+            tmp_path = tmp.name
+        try:
+            sftp = self.client.open_sftp()
+            sftp.put(tmp_path, remote_path)
+            sftp.close()
+        finally:
+            os.remove(tmp_path)
